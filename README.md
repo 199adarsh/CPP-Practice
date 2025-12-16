@@ -25,27 +25,97 @@
 
 ---
 
-## 🔍 Overview
+## ✦ Overview
 
-This repository demonstrates how I approach C++ as a **software engineer**:
+> A professionally curated C++ codebase developed during academic training at
+> **Sunbeam CDAC**, with an emphasis on **engineering discipline**,
+> **modern C++ practices**, and **production-oriented thinking**.
 
-* Clear intent in every file
+## Philosophy
+
+* Code written for humans first, compilers second
 * Strong fundamentals before abstraction
-* Code written for **humans first**, compilers second
+* Clarity, correctness, and intent over cleverness
 
-**Suitable for:**
+## ✦ Highlights
 
-* Technical screening reviews
-* Peer code walkthroughs
-* Concept-driven learning references
+* Written as part of **Sunbeam CDAC training conducted at our college**
+* Daily practice focused on **strengthening C++ fundamentals**
+* Explicit ownership semantics and memory safety
+* Idiomatic use of STL over manual loops wherever appropriate
+* Object-oriented design with clean abstraction boundaries
+* Code optimized for **readability, review, and learning**
 
 ---
 
-## 🧠 Technical Scope
+## ✦ Technical Scope
 
-### 🔹 Core Language Foundations
+### ◼ Core Language Foundations
 
-| Category     | Covered Topics            |
-| ------------ | ------------------------- |
-| Control Flow | Loops, conditionals       |
-| Functions    | Modular design, recursion |
+<table>
+<tr>
+<td width="35%"><strong>Control Flow</strong></td>
+<td>Loops, conditionals, early exits</td>
+</tr>
+<tr>
+<td><strong>Functions</strong></td>
+<td>Modular design, recursion, parameter passing</td>
+</tr>
+<tr>
+<td><strong>Data Types</strong></td>
+<td>Primitive types, user-defined types, type safety</td>
+</tr>
+<tr>
+<td><strong>Pointers & References</strong></td>
+<td>Addressing, aliasing, const correctness</td>
+</tr>
+<tr>
+<td><strong>Memory Model</strong></td>
+<td>Stack vs heap, object lifetimes</td>
+</tr>
+<tr>
+<td><strong>Object-Oriented C++</strong></td>
+<td>Encapsulation, inheritance, polymorphism</td>
+</tr>
+<tr>
+<td><strong>Constructors</strong></td>
+<td>Initialization, copy semantics, move semantics</td>
+</tr>
+<tr>
+<td><strong>Destructors</strong></td>
+<td>Deterministic cleanup, RAII principles</td>
+</tr>
+<tr>
+<td><strong>Operator Overloading</strong></td>
+<td>Meaningful operator design, readability</td>
+</tr>
+<tr>
+<td><strong>Templates</strong></td>
+<td>Function and class templates, basic generic programming</td>
+</tr>
+</table>
+
+---
+
+
+## ✦ Build & Environment
+
+```
+Language Standard : C++17 / C++20
+Compiler          : GCC / Clang
+Platform          : Linux
+Build             : Command-line / Makefile
+```
+
+---
+
+## ✦ Engineering Focus
+
+* Readable, review-friendly code
+* Fundamental correctness over premature optimization
+* Design decisions explained through structure, not comments
+* Practices aligned with real-world C++ engineering
+
+
+
+
