@@ -18,6 +18,7 @@ int main (){
             total = (total*0.95);
 
     cout <<"Your total is : " << total << " for " << cup <<" of tea" << endl;  
+    
 
     return 0;
 }

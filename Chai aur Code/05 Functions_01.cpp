@@ -2,7 +2,7 @@
 
 using namespace std ;
 
-int main( ) {-----
+int main( ) {
 
 //lamda
 auto preparedChai = [](int cups) {
