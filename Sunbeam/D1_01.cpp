@@ -1,5 +1,6 @@
 
     #include <iostream>
+    #include<iomanip>
 
     using namespace std;
 
@@ -39,26 +40,25 @@
 
         cout << "Enter the selling price of stock :" << endl;
         cin >> sp;
+        cout << setw(30) <<"Share Trading Statement"<< endl;
 
-        double brokerage = calculateBrokerage(bp, sp);
-        cout << "Total Brokerage :" << brokerage << endl;
+            double brokerage = calculateBrokerage(bp, sp);
+            cout << setw(30) << left << "Total Brokerage :" <<   setw(10)  << brokerage << endl;
 
-        double st = calculate_st(brokerage);
-        cout << "Total Service Tax:" << st << endl;
+            double st = calculate_st(brokerage);
+            cout << setw(30) << left << "Total Service Tax:" <<  setfill('.')<<  setw(10)  << st << endl;
 
-        double stt = calculateSTT(sp);
-        cout << "Total STT :" << stt << endl;
+            double stt = calculateSTT(sp);
+            cout << setw(30) << left << "Total STT :" <<  setw(10)<< stt << endl;
 
-        double sd = calculate_sd(sp, bp);
-        cout << "Total Stamp Deuty :" << sd << endl;
+            double sd = calculate_sd(sp, bp);
+            cout << setw(30) << left << "Total Stamp Duty :" <<  setw(10) << sd << endl;
 
-        double rc = calculate_rc(sp, bp);
-        cout << "Total Regulatory Charges:" << rc << endl;
+            double rc = calculate_rc(sp, bp);
+            cout << setw(30) << left << "Total Regulatory Charges:" << setw(10) <<  rc << endl;
 
-        double tc = totalc(brokerage, st, stt, sd, rc);
-        double total = calculateProfit(sp, bp, tc);
-        cout << "Your total profit is :" << total << endl;
-
-        return 0;
+            double tc = totalc(brokerage, st, stt, sd, rc);
+            double total = calculateProfit(sp, bp, tc);
+            cout << setw(30) << left << "Your total profit is :" <<  setw(10) <<  total << endl;      return 0;
     }
 

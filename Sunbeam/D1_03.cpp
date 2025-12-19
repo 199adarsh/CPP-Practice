@@ -1,5 +1,6 @@
 
     #include <iostream>
+	#include <iomanip>
 
     using namespace std;
 
@@ -16,6 +17,7 @@
 
     int main() {
     	double units , total  ;
+		int ec = 130;
 
 	cout << "Enter units used"<< endl;
 	cin >> units;
@@ -48,8 +50,10 @@
 
 
 	
-	double alltotal = calculation( units,  total );
-	cout<< "Your total bill of units is : " << alltotal << endl;	
+	cout << setw(35) << setfill('.') << left << "Total units consumed :" << right << setw(10) << units << endl;
+	cout << setw(35) << setfill('.') << left << "Electricity consumption charges :" << right << setw(10) << ec << endl;
+	cout << setw(35) << setfill('.') << left << "Electricity transmission charges :" << right << setw(10) << (units * 1.47) << endl;
+	cout << setw(35) << setfill('.') << left << "Your total bill of units is :" << right << setw(10) << alltotal << endl;
     
 	return 0;
     }
