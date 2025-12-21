@@ -22,15 +22,12 @@ struct ddmm {
         cin >> mm;
         cout << "Year :" << endl;
         cin >> yy;
-        if (yy < 1900)
-            cout << "loop gear" << endl;
     }
     
     void print() {
         cout << "Date :" << dd << endl;
         cout << "Month :" << mm << endl;
         cout << "Year :" << yy << endl;
-    
     }
     void init() {
         dd = 01;

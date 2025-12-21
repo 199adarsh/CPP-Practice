@@ -1,63 +1,22 @@
-#include<iostream>
-#include <string>
-
+#include <iostream>
 using namespace std;
-struct ddmm {
-   
-    int dd;
-    int mm;
-    int yy;
-    
-    ddmm(int d, int m, int y) {
-        dd = d;
-        mm = m;
-        yy = y;
-    }
-    
-    void accept() {
-        cout << "Accept Date" << endl;
-        cout << "Date :" << endl;
-        cin >> dd;
-        cout << "Month :" << endl;
-        cin >> mm;
-        cout << "Year :" << endl;
-        cin >> yy;
-    }
-    
-    void print() {
-        cout << "Date :" << dd << endl;
-        cout << "Month :" << mm << endl;
-        cout << "Year :" << yy << endl;
-    }
-    void init() {
-        dd = 01;
-        mm = 01;
-        yy = 2001;
-    }
-};
 
-int main() {
-    ddmm date(10, 8, 2008);
+int add(int a , int b , int c , int d){
+        cout << "Your total is :"<<(a+b+c+d) << endl;
+}
 
-    int choise ;
-    cout <<  "Enter your choise \n1. Print \n2. Accept \n3.Init" << endl;
-    cin >> choise;
-    switch (choise)
-    {
-    case 1:
-         date.print();
-        break;
-    case 2: date.accept();
-        break;
-    case 3:date.init();
-        break;
-        
+int main (){
+    int a, b,c,d;
+    cout << "Enter 1st number :" << endl;
+    cin >> a; 
+    cout << "Enter 2nd number :" << endl;
+    cin >> b;
+    cout << "Enter 3rd number :" << endl;
+    cin >> c;
+    cout << "Enter 4th number :" << endl;
+    cin >> d;
     
-    default:
-        break;
-    }
-   
-   
+    add(a , b , c , d);
 
     return 0;
 }

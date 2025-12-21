@@ -2,35 +2,65 @@
 #include <string>
 
 using namespace std;
-struct employye {
-    string emp_name ;
-    int emp_id ;
-    int emp_salry ;
+struct ddmm {
+   
+    int dd;
+    int mm;
+    int yy;
     
-    employye(string name, int id, int salary) {
-        emp_name = name;
-        emp_id = id;
-        emp_salry = salary;
+    ddmm(int d, int m, int y) {
+        dd = d;
+        mm = m;
+        yy = y;
+    }
+    
+    void accept() {
+        cout << "Accept Date" << endl;
+        cout << "Date :" << endl;
+        cin >> dd;
+        cout << "Month :" << endl;
+        cin >> mm;
+        cout << "Year :" << endl;
+        cin >> yy;
+        if (yy < 1900)
+            cout << "loop gear" << endl;
+    }
+    
+    void print() {
+        cout << "Date :" << dd << endl;
+        cout << "Month :" << mm << endl;
+        cout << "Year :" << yy << endl;
+    
+    }
+    void init() {
+        dd = 01;
+        mm = 01;
+        yy = 2001;
     }
 };
 
+int main() {
+    ddmm date(10, 8, 2008);
 
-
-int main (){
-
-    employye e1("Ayushman" , 001 , 4500);
-
-    cout << "Enter Employee Name :" <<endl; 
-    cin >> e1.emp_name ;
-    cout << "Enter Employee Id :" << endl; 
-    cin>> e1.emp_id ;
-    cout << "Enter Employee Salry :" << endl;
-    cin>> e1.emp_salry ;
-
-
-    cout << "Employee Name :" << e1.emp_name << endl;
-    cout << "Employee Id :" << e1.emp_id << endl;
-    cout << "Employee Salry :" << e1.emp_salry << endl;
+    int choise ;
+    cout <<  "Enter your choise \n1. Print \n2. Accept \n3.Init" << endl;
+    cin >> choise;
+    switch (choise)
+    {
+    case 1:
+         date.print();
+        break;
+    case 2: date.accept();
+        break;
+    case 3:date.init();
+        break;
+        
+    
+    default:
+        break;
+    }
+   
+   
 
     return 0;
 }

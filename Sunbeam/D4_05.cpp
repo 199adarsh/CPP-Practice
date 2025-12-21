@@ -1,22 +1,36 @@
-#include <iostream>
-using namespace std;
+#include<iostream>
+#include <string>
 
-int add(int a , int b , int c , int d){
-    return (a+b+c+d);
-}
+using namespace std;
+struct employye {
+    string emp_name ;
+    int emp_id ;
+    int emp_salry ;
+    
+    employye(string name, int id, int salary) {
+        emp_name = name;
+        emp_id = id;
+        emp_salry = salary;
+    }
+};
+
+
 
 int main (){
-    int a, b,c,d;
-    cout << "Enter 1st number :" << endl;
-    cin >> a; 
-    cout << "Enter 2nd number :" << endl;
-    cin >> b;
-    cout << "Enter 3rd number :" << endl;
-    cin >> c;
-    cout << "Enter 4th number :" << endl;
-    cin >> d;
-    
-    int total = add(a , b , c , d);
-    cout << "Your total is :"<<total << endl;
+
+    employye e1("Ayushman" , 001 , 4500);
+
+    cout << "Enter Employee Name :" <<endl; 
+    cin >> e1.emp_name ;
+    cout << "Enter Employee Id :" << endl; 
+    cin>> e1.emp_id ;
+    cout << "Enter Employee Salry :" << endl;
+    cin>> e1.emp_salry ;
+
+
+    cout << "Employee Name :" << e1.emp_name << endl;
+    cout << "Employee Id :" << e1.emp_id << endl;
+    cout << "Employee Salry :" << e1.emp_salry << endl;
+
     return 0;
 }
