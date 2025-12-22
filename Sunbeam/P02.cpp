@@ -3,16 +3,16 @@ using namespace std;
 
 int main()
 {
-    int n = 5;
+    int rows= 5;
     int num = 1;
 
-    for (int i = 1; i <= n; i++) {
+    for (int cols = 1; cols <= rows; cols++) {
 
 
-        for (int j = 0; j < n - i; j++)
+        for (int j = 0; j < rows- cols; j++)
             cout << " ";
 
-        for (int k = 1; k <= i; k++) {
+        for (int k = 1; k <= cols; k++) {
             cout << num<< " ";
             num++;
             if (num == 10) num = 0; 
