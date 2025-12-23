@@ -10,6 +10,7 @@ public:
     // Constructor with initializer list
     Student(int r, string n) : rollNo(r), name(n) {}
 
+
     // Const member function
     void display() const {
         cout << "Roll No: " << rollNo << endl;
@@ -19,6 +20,7 @@ public:
     // Non-const function (can modify non-const data)
     void changeName(string n) {
         name = n;
+        
     }
 };
 
@@ -28,6 +30,8 @@ int main() {
     s1.display();          // allowed
     s1.changeName("Bob");  // allowed
     s1.display();
+
+    Student s2(102,"alen");
 
     return 0;
 }

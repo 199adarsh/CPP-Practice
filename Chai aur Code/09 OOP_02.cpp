@@ -12,7 +12,7 @@ public:
 
     Counter* increment() {
         value++;
-        return this;  // return current object
+          return this;// return current object
     }
 
     void show() {

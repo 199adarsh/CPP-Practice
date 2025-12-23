@@ -13,7 +13,7 @@ public:
 
 class Math {
 public:
-    static int add(int a, int b) {
+    static int add(int a, int b) { // if we use static we dont need to create a object 
         return a + b;
     }
 };
@@ -23,14 +23,14 @@ public:
 int Student::count = 0;
 
 int main() {
-    Student s1;
+    Student s1;// this calls constructor and const.. increses the count
     Student s2;
     Student s3;
     
-    cout << Math::add(5, 3);
+    cout << Math::add(5, 3)<< endl;
 
-
-    cout << "Number of students: " << Student::count << endl;
+    
+    cout << "\nNumber of students: " << Student::count << endl;
 
     return 0;
 }
