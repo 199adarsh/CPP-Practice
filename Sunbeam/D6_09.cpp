@@ -2,7 +2,7 @@
 using namespace std;
 
 int sum_ar(int arr[], int n) {
-    // Base case
+    
     if (n == 0)
         return 0;
 

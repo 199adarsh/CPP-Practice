@@ -1,13 +1,10 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-    string s, rev = "";
-    cout <<"Enter a word to check if it is pallindrome :"<< endl;
-    cin >> s;
 
-    
-    for (int i = s.length() - 1; i >= 0; i--) {
+string pallin(string s){
+    string rev="";
+        for (int i = s.length() - 1; i >= 0; i--) {
         rev += s[i];
     }
 
@@ -15,6 +12,14 @@ int main() {
         cout << "The given word is a Palindrome";
     else
         cout << "The given word is Not Palindrome";
+
+}
+int main() {
+    string s, rev = "";
+    cout <<"Enter a word to check if it is pallindrome :"<< endl;
+    cin >> s;
+    pallin(s);
+    
 
     return 0;
 }

@@ -5,6 +5,7 @@ using namespace std;
 int main() {
     string arr[] = {"flwower", "flwow", "flwight"};
     int n = 3;
+    
     string prefix = "";
 
     for (int i = 0; i < arr[0].length(); i++) {
