@@ -12,7 +12,7 @@ string pallin(string s){
         cout << "The given word is a Palindrome";
     else
         cout << "The given word is Not Palindrome";
-
+    return s ;
 }
 int main() {
     string s, rev = "";
