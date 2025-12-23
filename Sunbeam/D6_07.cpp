@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    string arr[] = {"flwower", "flwow", "flwight"};
+    string arr[] = {"flower", "flow", "flight"};
     int n = 3;
     
     string prefix = "";
