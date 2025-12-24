@@ -1,11 +1,15 @@
 #include <iostream>
 using namespace std;
 
+
+
 class time {
 private:
-    int sec, min, hour;
+    int sec, min, hour; 
+
 
 public:
+
     time() {
         sec = 0;
         min = 0;
@@ -93,5 +97,10 @@ int main() {
     date.initTime();
     date.acceptTime();
     date.displayTime();
+
+
+    cout << "Get min :" << endl;
+    cout << date.getMin() <<endl;
+    date.setSec(15);
     return 0;
 }

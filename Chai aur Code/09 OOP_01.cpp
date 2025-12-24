@@ -46,4 +46,7 @@ int main() {
 
     c1.setChaiName("Masala Chai");
     cout << c1.getChai() << endl;
+
+    string xyz = c1.getChai();
+    cout << xyz;
 }
