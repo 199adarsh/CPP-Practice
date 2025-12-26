@@ -10,4 +10,4 @@ public:
 int Student::count = 0;
 
 
-// static function and member 
+// this is how to static function and member 
