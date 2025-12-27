@@ -7,7 +7,7 @@
 <h1 align="center">
 
   <img src="https://img.shields.io/badge/C%2B%2B-blue" alt="C++" />  
-  C++ Engineering Portfolio — CDAC
+  C++ Learning / Practice Path — CDAC
 </h1>
 
 <p align="center">
