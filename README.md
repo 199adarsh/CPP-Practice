@@ -4,7 +4,7 @@
   <img src="https://i.ytimg.com/vi/cvV28xzjclA/maxresdefault.jpg" alt="C++ Banner" width="85%">
 </p>
 
-<h1 align="center">git merge --abort
+<h1 align="center">
 
   <img src="https://img.shields.io/badge/C%2B%2B-blue" alt="C++" />  
   C++ Engineering Portfolio — CDAC
