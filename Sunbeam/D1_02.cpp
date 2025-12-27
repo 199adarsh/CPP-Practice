@@ -17,6 +17,7 @@ double length , width , Point, Tm , Bm , Lm , Rm , Elength, Ewidth , LineW , Lin
 cout << "Enter the length of paper :"<< endl;
 cin >>  length ;
 
+
 cout << "Enter width length of paper :"<< endl;
 cin >> width ;
 

@@ -1,90 +1,41 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class cylinder
-{
+class Student {
+public:
+    int* marks;          // pointer that will store address of heap memory
 
- private:
-  int r;
-  int h;
-  static double pi;
 
- public:
-cylinder()
-{
-  r=25;
-  h=15;
-  cout<<"inside the constructor of class"<<endl;
-}
+    Student(int m) {
+        marks = new int(m);   // new memory created on heap, value stored
+    }
 
-cylinder(int radius,int height)// hya constructor la value pass karych ahe // 
-{
-  r=radius;
-  h=height;
-  cout<<"inside the parameterised constructor of class"<<endl;
-}
 
-void setRadius(){
-  cout<<"enter radius"<<endl;
-  cin >>r;
 
-}
+    // here we pass the object directly 
+    Student(Student &s) {
+        marks = new int(*s.marks);   // the passed objects value will be saved in new int 
+    }
 
-void setHeight(){
-  cout<<"enter height"<<endl;
-  cin >>h; 
 
-}
 
-int getHeight(){ 
-return h;
-
-}
-
-int getRadius()
-{
-  return r;
-}
-
-void accept()
-{
- 
-setHeight();
-setRadius(); 
-}
-
-void display()
-{
-cout<<"Radius"<<getRadius()<<endl; 
-cout<<"Height"<< getHeight()<<endl; 
-calculate();   
-}      
-
-void calculate() 
-{
-   
-   cout<<"volume of cylinder="<<(pi*r*r*h)<<endl; // aapn direct calculate karn print karu shaktoy !
-
-}
-
-~cylinder()
-{
-    cout<<"inside the destructor of class cylinder"<<endl;
-}
-
+    void display() {
+        cout << *marks << endl;     
+    }
 };
 
-double cylinder::pi=3.14; 
+int main() {
+    Student s1(90);      // object created, marks = 90
 
-int main()                             
-{
-cylinder c1;
-
-c1.accept();
-c1.display();
+    Student s2 (s1);     // we dont pass the value we pass the object → s2 gets its own memory
+    // Student s2 = s1  - standerd method of copy constructor    
 
 
-return 0;
+    *s2.marks = 95;      // change only s2's marks
 
+    s1.display();        // prints 90 (unchanged)
+    s2.display();        // prints 95 (separate copy)
+
+    return 0;
 }
 
