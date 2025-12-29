@@ -20,7 +20,8 @@ public:
 
 
     void display() {
-        cout << *marks << endl;     
+        cout << *marks << endl;  
+        //cout << &(*marks)<< endl;   
     }
 };
 

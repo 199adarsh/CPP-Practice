@@ -18,6 +18,8 @@ public:
         radius = radius1;
 
     }
+     pi = 3.7;
+    
 
     void input(){
             setHeight();
@@ -29,7 +31,7 @@ public:
         cout << "The height of cylinder : "<< height<< endl;
         cout << "The radius of cylinder : "<<radius<< endl;
         cout <<"Volume of cylinder is :"<<calVol();
-   
+   ~
     }        
     
     int  getRadius(){
@@ -38,7 +40,6 @@ public:
     int  getHeight(){
         return height ;
     }
-
 
 
     void setRadius(){

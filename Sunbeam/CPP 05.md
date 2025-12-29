@@ -413,6 +413,8 @@ int main() {
     Student s1(90);      // object created, marks = 90
 
     Student s2 = s1;     // deep copy → s2 gets its own memory
+    Student s2 (s1);     // alternate (easy) way for deep copy
+
 
     *s2.marks = 95;      // change only s2's marks
 
