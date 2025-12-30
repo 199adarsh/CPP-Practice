@@ -17,12 +17,13 @@ class Date{
         }
 
         void acceptDate(){
-            cout << "Enter the Day : "<< endl;
+            cout << "Enter the Day : ";
             setDay();
-            cout << "Enter the Month : " << endl;
+            cout << "Enter the Month : " ;
             setMonth();
-            cout << "Enter the Year : " << endl;
+            cout << "Enter the Year : " ;
             setYear();
+            cout << "\n" << endl;
 
         }
 
@@ -52,13 +53,13 @@ class Date{
 
         }
         void displayDate(){
-            cout << "Day : "<< endl;
+            cout << "Day : ";
             getDay();
-            cout << "Month : " << endl;
+            cout << "  Month : " ;
             getMonth();
-            cout << "Year : " << endl;
+            cout << "  Year : ";
             getYear();
-
+            cout << "\n" << endl;
         }
 
 
@@ -77,12 +78,14 @@ class Employee{
 
 
         void acceptEmp(){
-            cout << "Enter the Employee ID : "<< endl;
+            cout << "---- Enter Employee Details ----" << endl;
+            cout << "\nEnter the Employee ID : "<< endl;
             setID();
             cout << "Enter the Employee Dept : " << endl;
             setName();
-            cout << "Enter the Joining Date: " << endl;
+            cout << "\nEnter the Joining Date: " << endl;
             d1.acceptDate();
+            cout << "\n" << endl;
 
         }
 
@@ -106,12 +109,15 @@ class Employee{
         }
 
         void displayEmp(){
-            cout << "ID : "<< endl;
+            cout << "\n---- Employyee Details ----" << endl;
+            cout << "ID : ";
             getID();
-            cout << "Dept Name : " << endl;
+            cout << "\nDept Name : " ;
             getName();
-            cout << "Joining Date : " << endl;
+            cout << "\nJoining Date : " << endl;
             d1.displayDate();
+            cout <<endl;
+            cout << "\n" << endl;
 
         }
 
@@ -133,16 +139,18 @@ class Student{
 
 
         void acceptStud(){
-            cout << "Enter the Studetn ID : "<< endl;
+            cout << "---- Enter Student Details ----" << endl;
+            cout << "Enter the Studetn ID : ";
             setID();
-            cout << "Enter the Course : " << endl;
+            cout << "Enter the Course : " ;
             setCourse();
-            cout << "Enter the Marks : " << endl;
+            cout << "Enter the Marks : " ;
             setMarks();
-            cout << "Enter the Joining Date: " << endl;
+            cout << "Enter the Joining Date: " ;
             d1.acceptDate();
-            cout << "Enter the Joining Date: " << endl;
+            cout << "Enter the End Date: " ;
             d2.acceptDate();
+            cout << "\n" << endl;
         }
 
         void setID(){
@@ -160,29 +168,32 @@ class Student{
         
         
         void getID(){
-            cout << RollNo; 
+            cout << RollNo<<endl;
 
         }
         void getMarks(){
-            cout << marks; 
+            cout << marks<<endl; 
 
         }
+        
         void getCourse(){
-            cout <<course; 
+            cout <<course<<endl; 
 
         }
 
         void displayStud(){
-            cout << "Studetn ID : "<< endl;
+            cout << "\n---- Student Details ----" << endl;
+            cout << "Student ID : ";
             getID();
-            cout << "Enter the Course : " << endl;
-            getCourse();
-            cout << "Enter the Marks : " << endl;
+            cout << "Course : " ;
+            getCourse(); 
+            cout << "Marks : " ;
             getMarks();
-            cout << "Joining Date: " << endl;
+            cout << "Joining Date: " ;
             d1.displayDate();
-            cout << "Joining Date: " << endl;
+            cout << "Joining Date: " ;
             d2.displayDate();
+            cout << "\n" << endl;
         }
         
 
@@ -195,8 +206,11 @@ int main()
     int choice;
     Employee employee;
     Student student;
+
+    
     cout << "\n" << endl;
     do {
+        cout << "\n" << endl;
         cout << "Menu:" << endl;
         cout << "1. Accept Employee Details" << endl;
         cout << "2. Display Employee Details" << endl;
