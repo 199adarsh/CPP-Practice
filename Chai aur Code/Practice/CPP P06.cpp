@@ -4,34 +4,32 @@ using namespace std;
 
 class Student {
 public:
-    int* marks;        
 
-   
-    Student(int m) {
-        marks = new int(m);   
+
+    int a, b;
+
+    Student(int x, int y) {
+        a = x; b = y;
+    }
+
+    Student operator+(Student &c) {
+        cout << "A" << (a + c.a ) <<"B"<< (b + c.b) << endl;
     }
 
 
-    Student(Student &s) {
-        marks = new int(*s.marks);   // new memory + copy value (not pointer)
-    }
 
-    void display() {
-        cout << *marks << endl;      
-    }
+
+
 };
 
 int main() {
-    Student s1(90);   
 
-    //Student s2 = s1;     // deep copy → s2 gets its own memory
-    Student s2 (s1);     // alternate (easy) way for deep copy
+    Student c1(2, 3), c2(4, 5);
+    Student c3 = c1 + c2;
+ 
 
-
-    *s2.marks = 95;  
-
-    s1.display();        
-    s2.display();       
+     
 
     return 0;
 }
+
