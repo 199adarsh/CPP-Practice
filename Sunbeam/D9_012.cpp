@@ -27,16 +27,28 @@ void Date::displayDate() {
     cout << "Date: " << date << endl;
     cout << "Month: " << month << endl;
     cout << "Year: " << year << endl;
+    
+    if (isLeap(year)){
+        cout << "The year "<<year<< " is a Leap Year !" <<endl;
+    }
+    else{
+        cout << "The year "<<year<< " is not Leap Year !" <<endl;
+    }
+    
+}
+
+bool Date::isLeap(int year){
     if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-        cout << "Leap year" << endl;
+       return true ;
     } else {
-        cout << "Not a leap year" << endl;
+        return false;
     }
 }
 
 int main() {
     Date d1(1, 1, 2001);
     d1.displayDate();
+    cout <<"\n" << endl;
 
     Date d2(01,02,2001);
     d2.acceptDate();

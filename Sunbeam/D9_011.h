@@ -15,7 +15,7 @@ class Date {
         void initDate();
         void acceptDate();
         void displayDate();
-        bool isLeap();
+        bool isLeap(int year);
 
 };
 
