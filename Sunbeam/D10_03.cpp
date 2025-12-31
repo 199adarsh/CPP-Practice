@@ -2,21 +2,21 @@
 
 using namespace std;
 
-class Student {
+class Complex {
 public:
     int* real ;
     int* imag;
 
-    Student(int r , int i) { 
+    Complex(int r , int i) { 
         real= new int(r);
         imag = new int (i); 
     }
     
-    /*Student(const Student &s) {
+    Complex(const Complex &s) {
         real = new int(*s.real);
         imag= new int(*s.imag);   
 
-    }*/
+    }
 
     void display() {
         cout << "Real Number :"<< *real << endl;
@@ -25,12 +25,15 @@ public:
 };
 
 int main() {
-    Student s1(90, 100);
-    Student s2 = s1;   
+    Complex s1(90, 100);
+    Complex s2 (s1);   
 
+    s2.display();
+    cout << "After changing :" << endl;
     *s2.real = 95; 
-       
+    cout << "S1 Object \n" << endl;
     s1.display();      
+    cout << "S2 Object \n" << endl;
     s2.display();  
     
     return 0;
