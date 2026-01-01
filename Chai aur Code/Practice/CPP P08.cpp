@@ -6,7 +6,7 @@ class Animal{
         string name;
     
     public: 
-        virtual void speak()= 0;
+        virtual void speak()= 0; //Pure virtual function
         
         
         virtual ~ Animal(){
@@ -19,7 +19,7 @@ class Animal{
 class Dog :  public Animal {
 
     public : 
-        void speak () override{
+        void speak () override{     // funtion overriding
             cout << "Bhaww Bhaww" << endl;
         }
 
@@ -36,7 +36,7 @@ class Cat : public Animal{
         }
     ~Cat(){
 
-        cout << "Cat : Destructor " <<endl;
+        cout << "Cat : Destructor " <<endl;     // Virtual destructor
     }
 };
 
@@ -49,9 +49,9 @@ int main()
     d->speak();
     c->speak();
 
-    Animal * a = d;
+    Animal * a = d;      // Upcasting       
 
-    Dog * newDog = dynamic_cast<Dog*> (d); 
+    Dog * newDog = dynamic_cast<Dog*> (d);   // DownCasting 
 
     delete d;
     delete c;
