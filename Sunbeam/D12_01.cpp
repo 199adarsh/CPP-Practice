@@ -16,22 +16,6 @@ class employee {
             cout << "Employee ID : " << i << " Employee Salary : " << s << endl;           
         }
 
-        double getSalary(){ 
-            return salary; 
-        }
-
-        double getID(){ 
-            return id; 
-        }
-
-        void setSalary(double sal){ 
-            salary = sal; 
-        }
-
-        void setID(int i){ 
-            id = i; 
-        }
-
         void accept (){
             cout << "Enter the Employee ID : ";
             cin >> id;
@@ -45,7 +29,8 @@ class employee {
         }
 };
 
-class manager : public employee {
+class manager : public virtual employee {
+
         double bonus;
 
     public:
@@ -57,27 +42,19 @@ class manager : public employee {
             cout << "Employee Bonus : " << b << endl;
         }
 
-        double getBonus(){ 
-            return bonus; 
-        }
-
-        void setBonus(double b){ 
-            bonus = b; 
-        }
-
+    protected :
         void acceptBonus (){
-            employee::accept();
             cout << "Enter the Bonus : ";
             cin >> bonus;
         }
 
         void displayBonus (){
-            employee::display();
             cout << "Bonus: " << bonus << endl;
         }
 };
 
-class salesman : public employee {
+class salesman : public virtual employee {
+
         double commission;
 
     public:
@@ -89,73 +66,74 @@ class salesman : public employee {
             cout << "Employee Commission : " << c << endl;
         }
 
-        double getcommission(){
-             return commission;
-        }
-
-        void setcommission(double c){ 
-            commission = c; 
-        }
-
+    protected :
         void acceptCommission (){
-
-            employee::accept();
-
             cout << "Enter the commission : ";
             cin >> commission;
         }
 
         void displayCommission (){
-            employee::display();
             cout << "commission: " << commission << endl;
         }
 };
 
 class salesmanager : public manager , public salesman {
 
-public:
-    salesmanager(){
-        cout << "Salesmanager : Parameter less constructor " << endl;
-    }
+    public:
+        salesmanager(){
+            cout << "Salesmanager : Parameterless constructor called\n";
+        }
 
-    salesmanager(int i , double s ,double b, double c): manager(i, s, b), salesman(i, s, c){
-        cout << "Salesmanager constructed\n";
-    }
+        salesmanager(int i , double s ,double b, double c): employee(i , s) , manager(i , s , b) , salesman(i , s , c){
+            cout << "Salesmanager constructor\n";
+        }
+
+        void accept (){
+            // manager::employee::accept(); alternate meathod wihout virtual 
+            employee::accept();
+            acceptBonus();
+            acceptCommission();
+        }
+
+        void display (){
+            employee::display();
+            displayBonus();
+            displayCommission();
+        }
 };
-
 int main()
 {
     salesmanager sm;
     int choice;
 
-    do
-    {
-        cout << "\n------ MENU ------\n";
-        cout << "1. Accept SalesManager Data\n";
-        cout << "2. Display SalesManager Data\n";
-        cout << "3. Exit\n";
-        cout << "Enter choice: ";
+    do{
+        cout << "\n1. Accept Details";
+        cout << "\n2. Display Details";
+        cout << "\n3. Display Parameterized Constructor Details";
+        cout << "\n0. Exit";
+        cout << "\nEnter choice : ";
         cin >> choice;
 
         switch(choice)
         {
             case 1:
-                cout << "\nEnter Manager Details \n";
-                sm.acceptBonus();         
-
-                cout << "\nEnter Salesman Details \n";
-                sm.acceptCommission();    
+                sm.accept();
                 break;
 
             case 2:
-                cout << "\nManager Info \n";
-                sm.displayBonus();
-
-                cout << "\nSalesman Info \n";
-                sm.displayCommission();
+                cout << "\nSalesmanager Details \n";
+                sm.display();
                 break;
 
             case 3:
+            {
+                cout << "\nParameterized Salesmanager \n";
+                salesmanager temp(101 , 50000 , 7000 , 3000);
+                temp.display();
+                break;
+            }
+
+            case 0:
                 cout << "Exit\n";
                 break;
 
@@ -163,7 +141,7 @@ int main()
                 cout << "Invalid choice!\n";
         }
 
-    } while(choice != 3);
+    }while(choice != 0);
 
     return 0;
 }
