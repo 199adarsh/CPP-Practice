@@ -32,21 +32,38 @@ public:
         return result;
     }
 
+
+    Rational& operator++() {
+        num += den;
+        return *this;
+    }
+
+    Rational operator++(int) {
+        Rational temp(*this);
+        ++(*this);
+        return temp;
+    }
+
+
+
     void display() const {
         cout << num << "/" << den << endl;
     }
 };
 
 int main() {
-    Rational r1(1,2), r2(3,4);
+    Rational r1(1,2);
 
-    Rational sum = r1.add(r2);
-    Rational diff = r1.subtract(r2);
-    Rational prod = r1.multiply(r2);
+    cout << "Original: ";
+    r1.display();
 
-    sum.display();
-    diff.display();
-    prod.display();
+    cout << "Prefix ++ : ";
+    ++r1;
+    r1.display();
+
+    cout << "Postfix ++ : ";
+    r1++;
+    r1.display();
 
     return 0;
 }
