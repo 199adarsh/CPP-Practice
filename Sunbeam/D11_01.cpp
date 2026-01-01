@@ -6,10 +6,16 @@ class Rational {
 private:
     int num, den;
 
-   
-
 public:
-    
+
+    Rational(int n = 0, int d = 1) {
+        if (d == 0) {
+            cout << "Denominator cannot be zero. Setting to 1.\n";
+            d = 1;
+        }
+        num = n;
+        den = d;
+    }
 
     Rational add(const Rational& r) const {
         Rational result(num * r.den + r.num * den, den * r.den);
