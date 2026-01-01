@@ -52,18 +52,40 @@ public:
 };
 
 int main() {
-    Rational r1(1,2);
+    Rational r1(4, 5);
+    Rational r2(8, 7);
 
-    cout << "Original: ";
+    cout << "r1: ";
+    r1.display();
+    cout << "r2: ";
+    r2.display();
+
+    
+    Rational sum = r1.add(r2);
+    cout << "ADD (r1 + r2) = ";
+    sum.display();
+
+    
+    Rational diff = r1.subtract(r2);
+    cout << "SUB (r1 - r2) = ";
+    diff.display();
+
+
+    Rational prod = r1.multiply(r2);
+    cout << "r1 * r2 = ";
+    prod.display();
+
+    
+    cout << "Prefix ++r1: ";
+    ++(++r1);
     r1.display();
 
-    cout << "Prefix ++ : ";
-    ++r1;
-    r1.display();
-
-    cout << "Postfix ++ : ";
-    r1++;
+    cout << "Postfix r1++: ";
+    (r1++)++;
     r1.display();
 
     return 0;
+
+
 }
+

@@ -89,7 +89,7 @@ class salesmanager : public manager , public salesman {
         }
 
         void accept (){
-            // manager::employee::accept(); alternate meathod wihout virtual 
+            // manager::accept(); alternate meathod wihout virtual 
             employee::accept();
             acceptBonus();
             acceptCommission();
