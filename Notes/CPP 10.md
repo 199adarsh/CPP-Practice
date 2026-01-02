@@ -154,42 +154,29 @@ public:
 
 **Early Binding (Static Binding)**
 
-* Function call **compile-time par decide hota hai**
-* Compiler checks pointer/reference type and fixes the call
-* Default behavior in C++
-* Fast (no extra lookup)
+* “Binding” means deciding which function gets called.
+* With early binding, the compiler decides this at compile time.
 
 **Late Binding (Dynamic Binding)**
 
-* Function call **runtime par decide hota hai**
-* Depends on the **actual object**
-* Happens only with **virtual functions**
-* Slight performance cost (vtable lookup)
+* With late binding, the decision happens while the program is running.
+* In C++, this happens mainly through virtual functions.
 
 ---
 
 ### **Early Binding Example**
 
 ```cpp
-class Base {
-public:
-    void display() {           // non-virtual
-        cout << "Base display" << endl;
-    }
-};
+#include <iostream>
+using namespace std;
 
-class Derived : public Base {
-public:
-    void display() {           // hides Base::display
-        cout << "Derived display" << endl;
-    }
-};
+void show(int)    { cout << "int\n"; }
+void show(double) { cout << "double\n"; }
 
 int main() {
-    Base* ptr = new Derived();
-    ptr->display();            // Base display  ✅
-    delete ptr;
+    show(5);      // compiler chooses show(int)
 }
+
 ```
 
 **Explanation (hinglish tip):**
@@ -201,25 +188,25 @@ isliye call **Base::display()** ko bind ho jata hai.
 ### **Late Binding Example**
 
 ```cpp
+#include <iostream>
+using namespace std;
+
 class Base {
 public:
-    virtual void display() {   // virtual enables polymorphism
-        cout << "Base display" << endl;
-    }
+    virtual void speak() { cout << "Base\n"; }
 };
 
 class Derived : public Base {
 public:
-    void display() override {
-        cout << "Derived display" << endl;
-    }
+    void speak() override { cout << "Derived\n"; }
 };
 
 int main() {
     Base* ptr = new Derived();
-    ptr->display();            // Derived display  ✅
-    delete ptr;
+    ptr->speak();     // calls Derived::speak (decided at runtime)
 }
+
+    // At runtime, C++ checks the actual object type and calls the right version
 ```
 
 **Explanation:**
@@ -395,7 +382,7 @@ int main() {
 ```
 s1 → Shape object
      ┌─────────┐
-     │ vptr    │ ──→ Shape's vtable
+     │ vptr    │ --→ Shape's vtable
      └─────────┘      ┌──────────────┐
                       │ Shape::draw()│
                       │ Shape::area()│
@@ -403,11 +390,11 @@ s1 → Shape object
 
 s2 → Circle object
      ┌─────────┐
-     │ vptr    │ ──→ Circle's vtable
-     └─────────┘      ┌──────────────┐
-                      │ Circle::draw()│  ← Overridden
-                      │ Shape::area() │  ← Inherited
-                      └──────────────┘
+     │ vptr    │ --→ Circle's vtable
+     └─────────┘      ┌────────────────┐
+                      │ Circle::draw() │  ← Overridden
+                      │ Shape::area()  │  ← Inherited
+                      └────────────────┘
 ```
 
 ---

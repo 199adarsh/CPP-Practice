@@ -158,11 +158,6 @@ Downcasting | Parent → Child | ⚠️ Risky | Only if object really child |
 
 ---
 
-Bilkul — main isko **simpler, clear aur exam-ready** style me likh deta hoon.
-Content same rahega — bas explanation smooth ho jayegi 👍
-
----
-
 ## 🔹 3. OBJECT SLICING
 
 ### 🧠 Core Idea
@@ -374,12 +369,6 @@ Benefits:
 * ✔️ Parent function `virtual`
 * ✔️ Derived uses `override`
 * 🎯 Enables **runtime polymorphism**
-
----
-=
-
-Nice — tum notes solid bana rahe ho 👏
-Main inko **aur clean, exam-ready, aur easy-to-read** format me likh kar arrange kar deta hoon — concepts same, bas clarity zyada.
 
 ---
 
