@@ -328,7 +328,7 @@ v->start();      // Car version runs (runtime polymorphism)
 | Classes         | Same class                      | Parent + Child              |
 | Signature       | Different                       | Same                        |
 | Polymorphism    | Compile-time                    | Runtime                     |
-| virtual needed? | ❌                               | ✔️ Yes (parent side)        |
+| virtual needed? | ❌                             | ✔️ Yes (parent side)        |
 
 ---
 
