@@ -50,6 +50,7 @@ class painter : public Artist {
 		cin >> paintingRate;
 		cout << "Enter the no of Paintings : " ;
 		cin >> paintings;
+        
 	}
 
 	void displayPainterData(){
@@ -58,6 +59,7 @@ class painter : public Artist {
 		cout << "Rate of Painting : " << paintingRate << endl;
 		cout << "No of Paintings : " << paintings<< endl;
         cout << "Total Income of Painter : "<<calculateTotalIncome();
+        isFamus();
 	}
 	
 	virtual float calculateTotalIncome()override{
@@ -89,6 +91,7 @@ class singer : public Artist {
 		cout << "Rate of Albums : " << albumsRate << endl;
 		cout << "No of albums : " << albums<< endl;
         cout << "Total Income of singer : "<<calculateTotalIncome();
+        isFamus();
 	}
 	
 	virtual float calculateTotalIncome()override{
