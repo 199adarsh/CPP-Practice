@@ -12,23 +12,24 @@ class Artist {
 
     public : 
 	void acceptData(){
-		cout << "Enter the name of Artist : " << endl;
+		cout << "Enter the name of Artist : " ;
 		cin >> name;
-		cout << "Enter the Rating of Artist : " << endl;
+		cout << "Enter the Rating of Artist : " ;
 		cin >> rating;
-		cout << "Enter the Country of Artist :" << endl;
+		cout << "Enter the Country of Artist : " ;
 		cin >>country;
 	}
 
 	void displayArtistData(){
 		cout << "Name of Artist : " << name << endl;
-		cout << "Rating of Artist" << rating << endl;
+		cout << "Rating of Artist : " << rating << endl;
 		cout << "Country of Artist : " << country << endl;
 	}
 	
 	virtual float calculateTotalIncome()= 0;
     bool isFamus(){
-        cout << ((rating >=2) ? "Artist is not Famus !" : (rating <2) ? "Artist is Famus " : " " ) << endl; 
+        cout << ((rating >=2) ? "Artist is not Famus !" : (rating <2) ? "Artist is Famus " : " " ) << endl;
+        return true ; 
     }
     
 };
@@ -43,18 +44,18 @@ class painter : public Artist {
     public : 
 	void acceptPainterData(){
         Artist::acceptData();
-		cout << "Enter the type of painting (Decorative / Commercial) : " << endl;
+		cout << "Enter the type of painting (Decorative / Commercial) : " ;
 		cin >> type;
-		cout << "Enter the Rate of Painting: " << endl;
+		cout << "Enter the Rate of Painting: " ;
 		cin >> paintingRate;
-		cout << "Enter the no of Paintings :" << endl;
+		cout << "Enter the no of Paintings : " ;
 		cin >> paintings;
 	}
 
 	void displayPainterData(){
         Artist::displayArtistData();
 		cout << "Type of Paintings : " << type << endl;
-		cout << "Rate of Painting" << paintingRate << endl;
+		cout << "Rate of Painting : " << paintingRate << endl;
 		cout << "No of Paintings : " << paintings<< endl;
         cout << "Total Income of Painter : "<<calculateTotalIncome();
 	}
@@ -77,15 +78,15 @@ class singer : public Artist {
     public : 
 	void acceptsingerData(){
 		Artist::acceptData();
-		cout << "Enter the Rate of Albums: " << endl;
+		cout << "Enter the Rate of Albums : " ;
 		cin >> albumsRate;
-		cout << "Enter the no of albums :" << endl;
+		cout << "Enter the no of albums : " ;
 		cin >> albums;
 	}
 
 	void displaysingerData(){
         Artist::displayArtistData();
-		cout << "Rate of Albums" << albumsRate << endl;
+		cout << "Rate of Albums : " << albumsRate << endl;
 		cout << "No of albums : " << albums<< endl;
         cout << "Total Income of singer : "<<calculateTotalIncome();
 	}
@@ -113,7 +114,7 @@ int main(){
         cout << "\n0. Exit";
         cout << "\nEnter choice : ";
         cin >> choice;
-        cout << "\n"
+        cout << "\n";
 
         switch(choice)
         {
@@ -151,4 +152,5 @@ int main(){
 
     return 0;
 }
+
 
