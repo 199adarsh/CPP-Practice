@@ -10,7 +10,7 @@ class Animal{
         
         
         virtual ~ Animal(){
-            cout << "Animal : V Destructor " ;
+            cout << "Animal : V Destructor " << endl ;
         }
 
 };
