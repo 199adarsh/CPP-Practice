@@ -6,9 +6,9 @@ using namespace std;
 
 class employee {
 
-protected:
-    int id{};
-    double salary{};
+
+    int id;
+    double salary;
 
 public:
     employee() {
@@ -48,7 +48,7 @@ public:
 
 class manager : public virtual employee {
 
-    double bonus{};
+    double bonus;
 
 public:
     manager() {
@@ -86,7 +86,7 @@ public:
 
 class salesman : public virtual employee {
 
-    double commission{};
+    double commission;
 
 public:
     salesman() {
@@ -158,10 +158,10 @@ int main() {
     int countManager = 0;
     int countSalesman = 0;
     int countSalesManager = 0;
-
+    int countEmp =0;
     
     for (int i = 0; i < size; i++) {
-        cout << "\nEnter Choice \n1. Manager\n2. Salesman\n3. SalesManager \n ";
+        cout << "\nEnter Choice \n1. Manager\n2. Salesman\n3. SalesManager\n ";
         int choice;
         cin >>choice;
 
@@ -182,19 +182,21 @@ int main() {
                 break;
 
             default:
-                cout << "Invalid — defaulting to Employee\n";
+                cout << "Invalid Enter Employee Detials\n";
                 arr[i] = new employee();
+                countEmp++;
         }
 
         arr[i]->accept();
     }
 
-
+    
     cout << "\n\nTotal Managers    : " << countManager;
+    cout << "\n\nTotal Employees    : " << countEmp;
     cout << "\nTotal Salesmen      : " << countSalesman;
     cout << "\nTotal SalesManagers : " << countSalesManager << "\n";
 
-    // DISPLAY MENU
+    
     cout << "\nSelect Role to Display \n";
     cout << "1 Managers\n";
     cout << "2 Salesmen\n";
@@ -205,30 +207,30 @@ int main() {
     int show;
     cin >> show;
 
-    cout << "\n RESULT \n";
+    cout << "\nRESULT \n";
 
     for (int i = 0; i < size; i++) {
         switch (show) {
 
             case 1:
-                if (typeid(*arr[i]) == typeid(manager))
+                if (typeid(*arr[i]) == typeid(manager)){
                     cout << "Manager" << endl;
                     arr[i]->display();
-                    cout << "\n";
+                    cout << "\n";}
                 break;
 
             case 2:
-                if (typeid(*arr[i]) == typeid(salesman))
+                if (typeid(*arr[i]) == typeid(salesman)){
                     cout << "SalesMan" << endl;
                     arr[i]->display();
-                    cout << "\n";
+                    cout << "\n";}
                 break;
 
             case 3:
-                if (typeid(*arr[i]) == typeid(salesmanager))
+                if (typeid(*arr[i]) == typeid(salesmanager)){
                     cout << "Salesmanager" << endl;
                     arr[i]->display();
-                    cout << "\n";
+                    cout << "\n";}
                 break;
 
             case 4:
