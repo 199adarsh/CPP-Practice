@@ -42,6 +42,10 @@ public:
 
 
 
+
+
+
+
 class manager : public virtual employee {
 
     double bonus{};
@@ -72,6 +76,10 @@ public:
         cout << "Bonus : " << bonus << endl;
     }
 };
+
+
+
+
 
 
 
@@ -109,6 +117,10 @@ public:
 
 
 
+
+
+
+
 class salesmanager : public manager, public salesman {
 
 public:
@@ -135,21 +147,23 @@ public:
 };
 
 
-//  MAIN 
+
 
 int main() {
-
-    employee* arr[7];
+    int size ;
+    cout << "Enter the size of Array :" ;
+    cin >> size;
+    employee* arr[size];
 
     int countManager = 0;
     int countSalesman = 0;
     int countSalesManager = 0;
 
     
-    for (int i = 0; i < 7; i++) {
-        cout << "\nEnter Choice 1. Manager\n2. Salesman\n3. SalesManager \n ";
+    for (int i = 0; i < size; i++) {
+        cout << "\nEnter Choice \n1. Manager\n2. Salesman\n3. SalesManager \n ";
         int choice;
-        cin >> choice;
+        cin >>choice;
 
         switch (choice) {
             case 1:
@@ -193,37 +207,43 @@ int main() {
 
     cout << "\n RESULT \n";
 
-    for (int i = 0; i < 7; i++) {
-
+    for (int i = 0; i < size; i++) {
         switch (show) {
 
             case 1:
                 if (typeid(*arr[i]) == typeid(manager))
+                    cout << "Manager" << endl;
                     arr[i]->display();
+                    cout << "\n";
                 break;
 
             case 2:
                 if (typeid(*arr[i]) == typeid(salesman))
+                    cout << "SalesMan" << endl;
                     arr[i]->display();
+                    cout << "\n";
                 break;
 
             case 3:
                 if (typeid(*arr[i]) == typeid(salesmanager))
+                    cout << "Salesmanager" << endl;
                     arr[i]->display();
+                    cout << "\n";
                 break;
 
             case 4:
                 arr[i]->display();
+                cout << "\n";
                 break;
 
             default:
                 cout << "Invalid display choice\n";
-                i = 7;
+                i = size;
                 break;
         }
     }
 
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < size; i++)
         delete arr[i];
 
     return 0;
