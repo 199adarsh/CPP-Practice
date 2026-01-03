@@ -1,8 +1,3 @@
-Perfect — I’ll give you **short but exact exam-style definitions**,
-chai-aur-code tone, but crisp and correct 👌
-
----
-
 ## 🔹 Pure Virtual Function
 
 **Definition:**
@@ -62,7 +57,8 @@ It occurs only with **virtual functions**.
 
 ```cpp
 Base* b = new Derived();
-b->show();     // Derived::show() (runtime)
+b->show();     
+// Derived::show() (runtime)
 ```
 
 👉 Enables **runtime polymorphism**.
@@ -97,3 +93,95 @@ object -> vptr -> vtable -> correct function address
 * Early binding → compile-time decision
 * Late binding → runtime decision
 * Virtual execution → vtable + vptr choose function dynamically
+
+
+
+---
+
+## 🔹 RTTI — `typeid` Operator
+
+**Definition:**
+`typeid` is an operator in C++ used to obtain **runtime type information** about an expression or type.
+It returns a reference to a `type_info` object that describes the type.
+
+👉 In simple words:
+
+> “`typeid` batata hai — yeh object **actually kis type ka** hai.”
+
+---
+
+### **📌 Syntax**
+
+```cpp
+typeid(expression)
+typeid(type)
+```
+
+It returns:
+
+```cpp
+const type_info&
+```
+
+---
+
+### **📌 Basic Example**
+
+```cpp
+int x = 5;
+cout << typeid(x).name();    // prints type name (e.g., "int")
+```
+
+⚠️ Output of `name()` **compiler-dependent** hota hai.
+
+---
+
+### **📌 With Polymorphism (real use)**
+
+```cpp
+class Animal { public: virtual void speak() {} };
+class Dog : public Animal {};
+class Cat : public Animal {};
+
+Animal* p = new Dog();
+cout << typeid(*p).name();   // Dog (runtime type)
+```
+
+Important difference:
+
+* `typeid(*p)` → **actual object type**
+* `typeid(p)`  → pointer type (`Animal*`)
+
+---
+
+### **📌 Requirement**
+
+RTTI works **fully** only when the class is **polymorphic**
+(i.e., has at least one `virtual` function).
+
+---
+
+### **📌 Common Uses**
+
+✔ debugging / logging <br>
+✔ type checking in rare cases<br>
+✔ plugin or serialization systems<br>
+
+👉 But:
+
+> “Agar virtual functions se kaam ho raha — RTTI ko mat ghusaao.”
+
+---
+
+### **📌 Quick Example Check**
+
+```cpp
+if (typeid(*p) == typeid(Dog))
+    cout << "Dog detected!";
+```
+
+---
+
+### **Summary Line (memorize)**
+
+> **`typeid` provides runtime type information by returning a `type_info` object describing the type of an expression or type.**

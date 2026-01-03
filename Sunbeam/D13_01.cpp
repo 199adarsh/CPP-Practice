@@ -5,36 +5,22 @@ using namespace std;
 
 
 class Artist {
-    private : 
+    public : 
         string name;
         int rating;
         string country;
 
-    public : 
-	void acceptData(){
-		cout << "Enter the name of Artist : " ;
-		cin >> name;
-		cout << "Enter the Rating of Artist : " ;
-		cin >> rating;
-		cout << "Enter the Country of Artist : " ;
-		cin >>country;
-	}
+	virtual void acceptData() = 0 ; 
 
-	void displayArtistData(){
-		cout << "Name of Artist : " << name << endl;
-		cout << "Rating of Artist : " << rating << endl;
-		cout << "Country of Artist : " << country << endl;
-	}
+	virtual void displayData() = 0;
 	
 	virtual float calculateTotalIncome()= 0;
-    bool isFamus(){
-        cout << ((rating >=2) ? "Artist is not Famus !" : (rating <2) ? "Artist is Famus " : " " ) << endl;
-        return true ; 
-    }
     
+    virtual bool isFamus() = 0;
 };
 
-class painter : public Artist {
+
+class painter : virtual public Artist {
 
     private : 
         string type;
@@ -42,8 +28,14 @@ class painter : public Artist {
         int paintings;
 
     public : 
-	void acceptPainterData(){
-        Artist::acceptData();
+	void acceptData()override {
+        cout << "Enter the name of Artist : " ;
+		cin >> name;
+		cout << "Enter the Rating of Artist : " ;
+		cin >> rating;
+		cout << "Enter the Country of Artist : " ;
+		cin >>country;
+
 		cout << "Enter the type of painting (Decorative / Commercial) : " ;
 		cin >> type;
 		cout << "Enter the Rate of Painting: " ;
@@ -53,8 +45,11 @@ class painter : public Artist {
         
 	}
 
-	void displayPainterData(){
-        Artist::displayArtistData();
+	void displayData() override{
+        cout << "Name of Artist : " << name << endl;
+		cout << "Rating of Artist : " << rating << endl;
+		cout << "Country of Artist : " << country << endl;
+
 		cout << "Type of Paintings : " << type << endl;
 		cout << "Rate of Painting : " << paintingRate << endl;
 		cout << "No of Paintings : " << paintings<< endl;
@@ -62,6 +57,11 @@ class painter : public Artist {
         isFamus();
 	}
 	
+    bool isFamus() override{
+        cout << ((rating >=2) ? "Artist is not Famus !" : (rating <2) ? "Artist is Famus " : " " ) << endl;
+        return true ; 
+    }
+    
 	virtual float calculateTotalIncome()override{
         return (paintingRate*paintings);
 
@@ -70,7 +70,7 @@ class painter : public Artist {
     
 };
 
-class singer : public Artist {
+class singer : virtual public Artist {
 
     private : 
         string type;
@@ -78,23 +78,37 @@ class singer : public Artist {
         int albums;
 
     public : 
-	void acceptsingerData(){
-		Artist::acceptData();
+	void acceptData()override{
+        cout << "Enter the name of Artist : " ;
+		cin >> name;
+		cout << "Enter the Rating of Artist : " ;
+		cin >> rating;
+		cout << "Enter the Country of Artist : " ;
+		cin >>country;
+
 		cout << "Enter the Rate of Albums : " ;
 		cin >> albumsRate;
 		cout << "Enter the no of albums : " ;
 		cin >> albums;
 	}
 
-	void displaysingerData(){
-        Artist::displayArtistData();
+	void displayData() override{
+        cout << "Name of Artist : " << name << endl;
+		cout << "Rating of Artist : " << rating << endl;
+		cout << "Country of Artist : " << country << endl;
+
 		cout << "Rate of Albums : " << albumsRate << endl;
 		cout << "No of albums : " << albums<< endl;
         cout << "Total Income of singer : "<<calculateTotalIncome()<< endl;
         isFamus();
 	}
 	
-	virtual float calculateTotalIncome()override{
+    bool isFamus() override{
+        cout << ((rating >=2) ? "Artist is not Famus !" : (rating <2) ? "Artist is Famus " : " " ) << endl;
+        return true ; 
+    }
+
+    virtual float calculateTotalIncome()override{
         return (albumsRate*albums);
 
     } ;
@@ -122,24 +136,24 @@ int main(){
         switch(choice)
         {
             case 1:
-                s1.acceptsingerData();
+                s1.acceptData();
                 break;
 
             case 2:
                 cout << "\nSinger Details \n";
-                s1.displaysingerData();
+                s1.displayData();
                 break;
 
             case 3:
             {
                
-                p1.acceptPainterData();
+                p1.acceptData();
                 break;
             }
             case 4:
             {
                
-                p1.displayPainterData();
+                p1.displayData();
                 break;
             }
 

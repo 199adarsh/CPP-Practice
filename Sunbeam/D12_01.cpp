@@ -1,148 +1,230 @@
 #include <iostream>
 #include <string>
+#include <typeinfo>
+
 using namespace std;
 
 class employee {
 
-        int id;
-        double salary;
+protected:
+    int id{};
+    double salary{};
 
-    public:
-        employee(){
-            cout << "Employee : Parameterless constructor called\n" ;
-        }
+public:
+    employee() {
+        cout << "Employee : Parameterless constructor called\n";
+    }
 
-        employee(int i , double s): id(i), salary(s){
-            cout << "Employee ID : " << i << " Employee Salary : " << s << endl;           
-        }
+    employee(int i, double s) : id(i), salary(s) {
+        cout << "Employee ID : " << i << " Employee Salary : " << s << endl;
+    }
 
-        void accept (){
-            cout << "Enter the Employee ID : ";
-            cin >> id;
-            cout << "Enter the Employee Salary : ";
-            cin >> salary;
-        }
+    void setId(int i) { id = i; }
+    void setSalary(double s) { salary = s; }
 
-        void display (){
-            cout << "Employee ID : " << id << endl;
-            cout << "Employee Salary : " << salary << endl;
-        }
+    int getID() const { return id; }
+    double getSalary() const { return salary; }
+
+    virtual void accept() {
+        cout << "Enter the Employee ID : ";
+        cin >> id;
+        cout << "Enter the Employee Salary : ";
+        cin >> salary;
+    }
+
+    virtual void display() {
+        cout << "Employee ID : " << id << endl;
+        cout << "Employee Salary : " << salary << endl;
+    }
+
+    virtual ~employee() {}
 };
+
+
 
 class manager : public virtual employee {
 
-        double bonus;
+    double bonus{};
 
-    public:
-        manager(){
-            cout << "Manager : Parameterless constructor called\n";
-        }
+public:
+    manager() {
+        cout << "Manager : Parameterless constructor called\n";
+    }
 
-        manager(int i , double s ,double b ): employee(i, s), bonus(b){
-            cout << "Employee Bonus : " << b << endl;
-        }
+    manager(int i, double s, double b) : employee(i, s), bonus(b) {
+        cout << "Employee Bonus : " << b << endl;
+    }
 
-    protected :
-        void acceptBonus (){
-            cout << "Enter the Bonus : ";
-            cin >> bonus;
-        }
+    void setBonus() {
+        cout << "Enter the Manager Bonus : ";
+        cin >> bonus;
+    }
 
-        void displayBonus (){
-            cout << "Bonus: " << bonus << endl;
-        }
+    double getBonus() const { return bonus; }
+
+    void accept() override {
+        employee::accept();
+        setBonus();
+    }
+
+    void display() override {
+        employee::display();
+        cout << "Bonus : " << bonus << endl;
+    }
 };
+
+
+
 
 class salesman : public virtual employee {
 
-        double commission;
+    double commission{};
 
-    public:
-        salesman(){
-            cout << "Salesman : Parameterless constructor called\n";
-        }
+public:
+    salesman() {
+        cout << "Salesman : Parameterless constructor called\n";
+    }
 
-        salesman(int i , double s ,double c ) : employee(i, s), commission(c){
-            cout << "Employee Commission : " << c << endl;
-        }
+    salesman(int i, double s, double c) : employee(i, s), commission(c) {
+        cout << "Employee Commission : " << c << endl;
+    }
 
-    protected :
-        void acceptCommission (){
-            cout << "Enter the commission : ";
-            cin >> commission;
-        }
+    void setCommission() {
+        cout << "Enter the Salesman Commission : ";
+        cin >> commission;
+    }
 
-        void displayCommission (){
-            cout << "commission: " << commission << endl;
-        }
+    double getCommission() const { return commission; }
+
+    void accept() override {
+        employee::accept();
+        setCommission();
+    }
+
+    void display() override {
+        employee::display();
+        cout << "Commission : " << commission << endl;
+    }
 };
 
-class salesmanager : public manager , public salesman {
 
-    public:
-        salesmanager(){
-            cout << "Salesmanager : Parameterless constructor called\n";
-        }
 
-        salesmanager(int i , double s ,double b, double c): employee(i , s) , manager(i , s , b) , salesman(i , s , c){
-            cout << "Salesmanager constructor\n";
-        }
+class salesmanager : public manager, public salesman {
 
-        void accept (){
-            // manager::accept(); alternate meathod wihout virtual 
-            employee::accept();
-            acceptBonus();
-            acceptCommission();
-        }
+public:
+    salesmanager() {
+        cout << "Salesmanager : Parameterless constructor called\n";
+    }
 
-        void display (){
-            employee::display();
-            displayBonus();
-            displayCommission();
-        }
+    salesmanager(int i, double s, double b, double c)
+        : employee(i, s), manager(i, s, b), salesman(i, s, c) {
+        cout << "Salesmanager constructor\n";
+    }
+
+    void accept() override {
+        employee::accept();
+        setBonus();
+        setCommission();
+    }
+
+    void display() override {
+        employee::display();
+        cout << "Bonus : " << getBonus() << endl;
+        cout << "Commission : " << getCommission() << endl;
+    }
 };
-int main()
-{
-    salesmanager sm;
-    int choice;
 
-    do{
-        cout << "\n1. Accept Details";
-        cout << "\n2. Display Details";
-        cout << "\n3. Display Parameterized Constructor Details";
-        cout << "\n0. Exit";
-        cout << "\nEnter choice : ";
+
+//  MAIN 
+
+int main() {
+
+    employee* arr[7];
+
+    int countManager = 0;
+    int countSalesman = 0;
+    int countSalesManager = 0;
+
+    
+    for (int i = 0; i < 7; i++) {
+        cout << "\nEnter Choice 1. Manager\n2. Salesman\n3. SalesManager \n ";
+        int choice;
         cin >> choice;
 
-        switch(choice)
-        {
+        switch (choice) {
             case 1:
-                sm.accept();
+                arr[i] = new manager();
+                countManager++;
                 break;
 
             case 2:
-                cout << "\nSalesmanager Details \n";
-                sm.display();
+                arr[i] = new salesman();
+                countSalesman++;
                 break;
 
             case 3:
-            {
-                cout << "\nParameterized Salesmanager \n";
-                salesmanager temp(101 , 50000 , 7000 , 3000);
-                temp.display();
-                break;
-            }
-
-            case 0:
-                cout << "Exit\n";
+                arr[i] = new salesmanager();
+                countSalesManager++;
                 break;
 
             default:
-                cout << "Invalid choice!\n";
+                cout << "Invalid — defaulting to Employee\n";
+                arr[i] = new employee();
         }
 
-    }while(choice != 0);
+        arr[i]->accept();
+    }
+
+
+    cout << "\n\nTotal Managers    : " << countManager;
+    cout << "\nTotal Salesmen      : " << countSalesman;
+    cout << "\nTotal SalesManagers : " << countSalesManager << "\n";
+
+    // DISPLAY MENU
+    cout << "\nSelect Role to Display \n";
+    cout << "1 Managers\n";
+    cout << "2 Salesmen\n";
+    cout << "3 SalesManagers\n";
+    cout << "4 All\n";
+    cout << "Enter choice: ";
+
+    int show;
+    cin >> show;
+
+    cout << "\n RESULT \n";
+
+    for (int i = 0; i < 7; i++) {
+
+        switch (show) {
+
+            case 1:
+                if (typeid(*arr[i]) == typeid(manager))
+                    arr[i]->display();
+                break;
+
+            case 2:
+                if (typeid(*arr[i]) == typeid(salesman))
+                    arr[i]->display();
+                break;
+
+            case 3:
+                if (typeid(*arr[i]) == typeid(salesmanager))
+                    arr[i]->display();
+                break;
+
+            case 4:
+                arr[i]->display();
+                break;
+
+            default:
+                cout << "Invalid display choice\n";
+                i = 7;
+                break;
+        }
+    }
+
+    for (int i = 0; i < 7; i++)
+        delete arr[i];
 
     return 0;
 }
-
