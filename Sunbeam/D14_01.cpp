@@ -1,0 +1,170 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+
+class Artist {
+    public : 
+        string name;
+        int rating;
+        string country;
+
+	virtual void acceptData() = 0 ; 
+	virtual void displayData() = 0;
+	virtual float calculateTotalIncome()= 0;
+    virtual bool isFamus() = 0;
+};
+
+
+class painter : virtual public Artist {
+
+    private : 
+        string type;
+        float paintingRate;
+        int paintings;
+
+    public : 
+	void acceptData()override {
+        cout << "Enter the name of Artist : " ;
+		cin >> name;
+		cout << "Enter the Rating of Artist : " ;
+		cin >> rating;
+		cout << "Enter the Country of Artist : " ;
+		cin >>country;
+
+		cout << "Enter the type of painting (Decorative / Commercial) : " ;
+		cin >> type;
+		cout << "Enter the Rate of Painting: " ;
+		cin >> paintingRate;
+		cout << "Enter the no of Paintings : " ;
+		cin >> paintings;
+        
+	}
+
+	void displayData() override{
+        cout << "Name of Artist : " << name << endl;
+		cout << "Rating of Artist : " << rating << endl;
+		cout << "Country of Artist : " << country << endl;
+
+		cout << "Type of Paintings : " << type << endl;
+		cout << "Rate of Painting : " << paintingRate << endl;
+		cout << "No of Paintings : " << paintings<< endl;
+        cout << "Total Income of Painter : "<<calculateTotalIncome()<< endl;
+        isFamus();
+	}
+	
+    bool isFamus() override{
+        cout << ((rating >=2) ? "Artist is not Famus !" : (rating <2) ? "Artist is Famus " : " " ) << endl;
+        return true ; 
+    }
+    
+	virtual float calculateTotalIncome()override{
+        return (paintingRate*paintings);
+
+    } ;
+
+    
+};
+
+class singer : virtual public Artist {
+
+    private : 
+        string type;
+        float albumsRate;
+        int albums;
+
+    public : 
+	void acceptData()override{
+        cout << "Enter the name of Artist : " ;
+		cin >> name;
+		cout << "Enter the Rating of Artist : " ;
+		cin >> rating;
+		cout << "Enter the Country of Artist : " ;
+		cin >>country;
+
+		cout << "Enter the Rate of Albums : " ;
+		cin >> albumsRate;
+		cout << "Enter the no of albums : " ;
+		cin >> albums;
+	}
+
+	void displayData() override{
+        cout << "Name of Artist : " << name << endl;
+		cout << "Rating of Artist : " << rating << endl;
+		cout << "Country of Artist : " << country << endl;
+
+		cout << "Rate of Albums : " << albumsRate << endl;
+		cout << "No of albums : " << albums<< endl;
+        cout << "Total Income of singer : "<<calculateTotalIncome()<< endl;
+        isFamus();
+	}
+	
+    bool isFamus() override{
+        cout << ((rating >=2) ? "Artist is not Famus !" : (rating <2) ? "Artist is Famus " : " " ) << endl;
+        return true ; 
+    }
+
+    virtual float calculateTotalIncome()override{
+        return (albumsRate*albums);
+
+    } ;
+
+    
+};
+
+int main(){
+
+    singer s1;
+    painter p1;
+    int choice;
+
+    do{
+        cout << "\n";
+        cout << "\n1. Accept Singer Details";
+        cout << "\n2. Display Singer Details";
+        cout << "\n3. Accept Painter Details";
+        cout << "\n4. Display Painter Details";
+        cout << "\n0. Exit";
+        cout << "\nEnter choice : ";
+        cin >> choice;
+        cout << "\n";
+
+        switch(choice)
+        {
+            case 1:
+                s1.acceptData();
+                break;
+
+            case 2:
+                cout << "\nSinger Details \n";
+                s1.displayData();
+                break;
+
+            case 3:
+            {
+               
+                p1.acceptData();
+                break;
+            }
+            case 4:
+            {
+               
+                p1.displayData();
+                break;
+            }
+
+            case 0:
+                cout << "Exit\n";
+                break;
+
+            default:
+                cout << "Invalid choice!\n";
+        }
+
+    }while(choice != 0);
+
+    return 0;
+}
+
+
