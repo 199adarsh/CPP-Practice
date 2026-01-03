@@ -58,7 +58,7 @@ class painter : public Artist {
 		cout << "Type of Paintings : " << type << endl;
 		cout << "Rate of Painting : " << paintingRate << endl;
 		cout << "No of Paintings : " << paintings<< endl;
-        cout << "Total Income of Painter : "<<calculateTotalIncome();
+        cout << "Total Income of Painter : "<<calculateTotalIncome()<< endl;
         isFamus();
 	}
 	
@@ -90,7 +90,7 @@ class singer : public Artist {
         Artist::displayArtistData();
 		cout << "Rate of Albums : " << albumsRate << endl;
 		cout << "No of albums : " << albums<< endl;
-        cout << "Total Income of singer : "<<calculateTotalIncome();
+        cout << "Total Income of singer : "<<calculateTotalIncome()<< endl;
         isFamus();
 	}
 	
