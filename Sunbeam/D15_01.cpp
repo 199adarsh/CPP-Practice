@@ -52,7 +52,7 @@ double div (double num1 , double num2){
     }
     catch(const string & e)
     {
-        cerr << e << '\n';
+        cout<< e << '\n';
     }
     return 0;
     
