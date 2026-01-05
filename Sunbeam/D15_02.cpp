@@ -9,7 +9,6 @@ class Bank {
         double value;
     public: 
         void accountCreation(){
-           
             cout << "Enter the account no : " ;
             cin >>accNo;
             cout << "Enter the initial money to deposit : ";
@@ -32,9 +31,9 @@ class Bank {
 
             cout << "Enter the money to Withdraw : ";
             cin >> value;
-            if (value >= (balance-2000)) throw string ("Please maintain Min Balance of 2000");
+            if (value > (balance-2000)) throw string ("Please maintain Min Balance of 2000");
             else balance -= value;
-            cout << "Money Withdrawn to Account No : " << accNo << " Balance : " << balance << endl;
+            cout << "Money Withdrawn from Account No : " << accNo << " Balance : " << balance << endl;
         }
 
 };
@@ -57,7 +56,7 @@ class BankingEx {
         try
         {
             while(choice != 3){
-            cout << "Menue :" << endl;
+            cout << "\nMenue :" << endl;
             cout << "1. deposit" << endl;
             cout << "2. Withdraw" << endl;
             cout << "3. Exit " << endl;
