@@ -136,7 +136,7 @@ public:
     void accept() override {
         employee::accept();
         setBonus();
-        setCommission();D
+        setCommission();
     }
 
     void display() override {
