@@ -55,13 +55,13 @@ int main()
     
     cout<<"Value at Front : "<<data<<endl;
     q1.dequeue();
-    data=q1.peek();
 
-    cout<<"Value at Front : "<<data<<endl;//20
+
+    cout<<"Value at Front : "<<data<<endl;
     q1.dequeue();
-    data=q1.peek();
 
-    cout<<"Value at Front : "<<data<<endl;//30
+
+    cout<<"Value at Front : "<<data<<endl;
         q1.dequeue();
         q1.dequeue();
         q1.dequeue();     
