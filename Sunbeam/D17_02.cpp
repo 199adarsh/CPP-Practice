@@ -32,7 +32,7 @@ int main() {
     cin>>name;
 
     if (addressBook.erase(name) == 1)
-        cout<<"Entry deleted!"<<endl;
+        cout<<"Book deleted!"<<endl;
     else
         cout<<"Name not found!"<<endl;
 
