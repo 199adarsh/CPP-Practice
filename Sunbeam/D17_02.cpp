@@ -19,9 +19,9 @@ int main() {
 
 
     cout<<"\nDisplay Address Book: "<<endl;
-    for (const auto &entry : addressBook) {
-        cout<<"Name: "<<entry.first<<endl;
-        cout<<"Address: "<<entry.second<<endl;
+    for (const auto &book : addressBook) {
+        cout<<"Name: "<<book.first<<endl;
+        cout<<"Address: "<<book.second<<endl;
         cout <<"\n";
     }
 
@@ -39,10 +39,10 @@ int main() {
 
 
     cout<<"Address Book After Deletion: "<<endl;
-    for (const auto &entry : addressBook) {
+    for (const auto &book : addressBook) {
         
-        cout<<"Name: "<<entry.first<<endl;
-        cout<<"Address: "<<entry.second<<endl;
+        cout<<"Name: "<<book.first<<endl;
+        cout<<"Address: "<<book.second<<endl;
         cout <<"\n";
     }
 
