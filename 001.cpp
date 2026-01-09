@@ -1,11 +1,8 @@
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-
-//                     BASE CLASS : Account
-
+// ===================== BASE CLASS =====================
 
 class Account
 {
@@ -15,8 +12,7 @@ protected:
     float balance;
 
 public:
-
-    //  Default Constructor 
+    // Default Constructor
     Account()
     {
         accId = 0;
@@ -32,12 +28,10 @@ public:
         balance = bal;
     }
 
-    //  Virtual Destructor 
-    virtual ~Account()
-    {
-    }
+    // Virtual Destructor
+    virtual ~Account() {}
 
-    //  Accept Function 
+    // Virtual Accept
     virtual void accept()
     {
         try
@@ -52,9 +46,7 @@ public:
             cin >> balance;
 
             if (balance < 0)
-            {
                 throw "Exception: Balance cannot be negative!";
-            }
         }
         catch (const char* msg)
         {
@@ -62,7 +54,7 @@ public:
         }
     }
 
-    //  Display Function 
+    // Virtual Display
     virtual void display()
     {
         cout << "Account ID      : " << accId << endl;
@@ -70,15 +62,11 @@ public:
         cout << "Balance        : " << balance << endl;
     }
 
-    //  Pure Virtual Function 
+    // Pure Virtual Function
     virtual void calculateInterest() = 0;
 };
 
-
-
-
-//              DERIVED CLASS : SavingsAccount
-
+// ===================== SAVINGS ACCOUNT =====================
 
 class SavingsAccount : public Account
 {
@@ -86,8 +74,6 @@ private:
     float interestRate;
 
 public:
-
-    //  Accept Function 
     void accept() override
     {
         Account::accept();
@@ -98,9 +84,7 @@ public:
             cin >> interestRate;
 
             if (interestRate < 0)
-            {
                 throw "Exception: Interest rate cannot be negative!";
-            }
         }
         catch (const char* msg)
         {
@@ -108,13 +92,11 @@ public:
         }
     }
 
-    //  Calculate Interest 
     void calculateInterest() override
     {
         balance = balance + (balance * interestRate / 100);
     }
 
-    //  Display Function 
     void display() override
     {
         calculateInterest();
@@ -123,11 +105,7 @@ public:
     }
 };
 
-
-
-
-//              DERIVED CLASS : CurrentAccount
-
+// ===================== CURRENT ACCOUNT =====================
 
 class CurrentAccount : public Account
 {
@@ -135,8 +113,6 @@ private:
     float serviceCharge;
 
 public:
-
-    //  Accept Function 
     void accept() override
     {
         Account::accept();
@@ -144,13 +120,11 @@ public:
         cin >> serviceCharge;
     }
 
-    //  Calculate Interest 
     void calculateInterest() override
     {
         balance = balance - serviceCharge;
     }
 
-    //  Display Function 
     void display() override
     {
         calculateInterest();
@@ -159,30 +133,25 @@ public:
     }
 };
 
-
-
-
-//                        MAIN FUNCTION
-
+// ===================== MAIN =====================
 
 int main()
 {
     int choice;
-
     SavingsAccount s;
     CurrentAccount c;
 
-    Account* ptr = NULL;        // Base class pointer (Upcasting)
+    Account* ptr = NULL;   // Upcasting
 
     do
     {
-        cout << "\n================= MENU =================" << endl;
+        cout << "\n========== MENU ==========" << endl;
         cout << "1. Enter Savings Account Details" << endl;
         cout << "2. Enter Current Account Details" << endl;
-        cout << "3. Display Savings Account using base-class pointer" << endl;
-        cout << "4. Display Current Account using base-class pointer" << endl;
+        cout << "3. Display Savings Account" << endl;
+        cout << "4. Display Current Account" << endl;
         cout << "5. Exit" << endl;
-        cout << "-------" << endl;
+        cout << "--------------------------" << endl;
 
         cout << "Enter your choice: ";
         cin >> choice;
@@ -190,22 +159,22 @@ int main()
         switch (choice)
         {
         case 1:
-            ptr = &s;              // Upcasting
+            ptr = &s;
             ptr->accept();
             break;
 
         case 2:
-            ptr = &c;              // Upcasting
+            ptr = &c;
             ptr->accept();
             break;
 
         case 3:
-            ptr = &s;              // Upcasting
+            ptr = &s;
             ptr->display();
             break;
 
         case 4:
-            ptr = &c;              // Upcasting
+            ptr = &c;
             ptr->display();
             break;
 
