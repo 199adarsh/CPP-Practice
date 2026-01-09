@@ -16,27 +16,38 @@ class Account {
    	     	accId = Id;
         	accHolder = holder;
         	balance = bal;
-    } // Parameterised constructor
+    } // Parameterised constructor called
 
-    virtual void accept() {
+    virtual ~Account() {
+        // virtual destructor just for safety to destroy the data
+    }
+
+    virtual void accept() { 		// accept the input for 1. Account ID , 2.Ac
         	try {
             		cout << "Enter the Bank Account Id : ";
             		cin >> accId;
+
             		cout << "Enter the Account Holder : ";
             		cin >> accHolder;
+
             		cout << "Enter the Bank Balance: ";
             		cin >> balance;
-            		if (balance < 0) throw string("Balance cannot be negative!"); 	} 
-		catch (const string& e) { cerr << "ERROR : " << e << endl; // catched the error of balance (if balance < 0)        }
+
+            		if (balance < 0) 
+                        throw string("Balance cannot be negative!");  
+            } 
+		    catch (const string& e) { 
+                cerr << "ERROR : " << e << endl;   // catched the error
+            }
     	}
 
     virtual void display() {
-        		cout << "Bank Account Id :" << accId << endl;
+        		cout << "Bank Account Id : " << accId << endl;
         		cout << "Account Holder : " << accHolder << endl;
-        		cout << "Bank Balance: " << balance << endl;
+        		cout << "Bank Balance  : " << balance << endl;
     }
 
-    virtual void calculateIntrest() = 0; // Exception rule inside accept(): If balance < 0, throw an exception
+    virtual void calculateIntrest() = 0;   // pure virtual function
 };
 
 
@@ -54,21 +65,26 @@ public:
 
     void accept() override {
         	Account::accept();
+
         	try {
             		cout << "Enter the Intrest Rate : ";
             		cin >> interestRate;
-            		if (interestRate < 0) throw string("Intrest Rate cannot be less than zero"); }
-	 catch (const string& e) {	cerr << "ERROR : " << e << endl; // catched the error of interest rate (if interest rate < 0)}
+
+            		if (interestRate < 0) 
+                        throw string("Intrest Rate cannot be less than zero"); 
+            }
+	        catch (const string& e) {	
+                cerr << "ERROR : " << e << endl;  // catched the error
+            }
     }
 
     void display() override {
-        	savingsAccount::calculateIntrest();
+        	calculateIntrest();   // calculating before showing
         	Account::display();
         	cout << "Intrest Rate : " << interestRate << endl;
         	cout << "\n";
     }
 };
-
 
 
 
@@ -81,7 +97,7 @@ private:
 
 public:
     void calculateIntrest() override {
-        	balance = balance - serviceCharge;
+        	balance = balance - serviceCharge;   // minus service charge
     }
 
     void accept() override {
@@ -91,7 +107,7 @@ public:
     }
 
     void display() override {
-        	CurrentAccount::calculateIntrest();
+        	calculateIntrest();   // calculating before showing
         	Account::display();
         	cout << "Service Charges : " << serviceCharge << endl;
         	cout << "\n";
@@ -100,9 +116,11 @@ public:
 
 int main() {
     int choise;
+
     savingsAccount s;
     CurrentAccount c;
-    Account* ptr = new CurrentAccount;
+
+    Account* ptr = NULL;   // base class pointer
 
     do {
         	cout << "Menue:" << endl;
@@ -110,41 +128,42 @@ int main() {
         	cout << "2. Enter Current Account Details:" << endl;
         	cout << "3. Display Savings Account using base-class pointer:" << endl;
         	cout << "4. Display Current Account using base-class pointer:" << endl;
-        	cout << "5. Exit	:" << endl;
+        	cout << "5. Exit :" << endl;
         	cin >> choise;
 
         switch (choise) {
 	case 1:
 		cout << "\nEnter Savings Account Details:" << endl;
+		ptr = &s;          // pointing base pointer to savings
 		ptr->accept();
 		break;
+
 	case 2:
 		cout << "\nEnter Current Account Details:" << endl;
-		c.accept();
+		ptr = &c;          // pointing base pointer to current
+		ptr->accept();
 		break;
+
 	case 3:
-                			cout << "\nSaving Account Details: " << endl;
-                			s.display();
+            cout << "\nSaving Account Details: " << endl;
+            s.display();
 		break;
+
 	case 4:
-		cout <<"\nCurrent Account Details: "<<endl;
-		ptr->display();
+        
+            cout <<"\nCurrent Account Details: "<<endl;
+            c.display();
 		break;
+
 	case 5 :
-		return0;
-			break;
+		cout << "Exiting program..." << endl;
+		break;
 			
 	default:
 		cout << "Invalid Choice!" <<endl;	
-		return 0;			
 	}	
 
+	} while(choise != 5);
 
-	}while(choise != 5 );
-
-return 0;
-
+    return 0;
 }
-
-
-//fix the try catch throw and possible errors and add comments
