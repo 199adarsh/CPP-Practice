@@ -34,7 +34,8 @@ class Account {
 	virtual void display(){ //To disply the details of user 
 	cout << "Bank Account Id :" <<accId << endl;
 	cout << "Account Holder : "<<accHolder << endl;
-	cout << "Enter the Bank Balance: "<<balance<< endl;
+	cout << "Bank Balance: "<<balance<< endl;
+	cout << "\n";
 	}
 	
 	virtual void calculateIntrest () = 0;	//Exception rule inside accept(): If balance < 0, throw an exception 
@@ -55,19 +56,32 @@ class savingsAccount : class Account {
 	void accept (){
 		Account :: accept();
 		try {
-		cout << "Enter the Intrest Rate : ";
-		cin >> interestRate;
-		if (interestRate < 0) throw string(Intrest Rate cant be less than zero)
+			cout << "Enter the Intrest Rate : ";
+			cin >> interestRate;
+			if (interestRate < 0) throw string(Intrest Rate cant be less than zero);
 		}
 		catch (string * m){
-		cout << "ERROR : " << m <<endl;	
+			cout << "ERROR : " << m <<endl;		// catched the error of intrest rate (if intrest rate < 0 )
 		}
 		
+	}
+	void display(){
+		Account :: display();
+		cout << "Intrest Rate : " << interestRate<< endl;
+		cout << "\n";
 	}
 
 
 
-}; 
+};
+
+
+class CurrentAccount : class Account {
+	private:
+		float serviceCharge
+
+	
+}
 
 int main()
 {
