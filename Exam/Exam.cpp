@@ -3,13 +3,12 @@
 using namespace std;
 
 class Account {
-
-    private :
-        int accId;
-        string accHolder ;
-        float balance;
         
     public :
+      	int accId;
+        string accHolder ;
+        float balance;
+
         Account (){
             cout << "Class Account : Param-less constructor callled " << endl;
         }// Parameter less constructor
@@ -45,12 +44,12 @@ class Account {
 }; // Account class closed 
 
 
-class savingsAccount : class Account {
+class savingsAccount : virtual public Account {
 	private: 
 		float interestRate;
 	public:
 		virtual void calculateIntrest () override{ // overriden the virtual funtion of calculate intrest 
-		balance = balance + (balance ×interestRate /100)
+		balance = balance + (balance ×interestRate /100);
 		}
 
 	void accept (){
@@ -61,7 +60,7 @@ class savingsAccount : class Account {
 			if (interestRate < 0) throw string(Intrest Rate cant be less than zero);
 		}
 		catch (string * m){
-			cout << "ERROR : " << m <<endl;		// catched the error of intrest rate (if intrest rate < 0 )
+			cout << "ERROR : " << m <<endl;		// catched the error ofintrest rate (if intrest rate < 0 )
 		}
 		
 	}
@@ -76,19 +75,19 @@ class savingsAccount : class Account {
 };
 
 
-class CurrentAccount : class Account {
+class CurrentAccount : virtual public Account {
 	private:
 		float serviceCharge;
 	public :
 
 	void calculateIntrest () override{
-	balance = balance − serviceCharge;
+	balance = (balance - serviceCharge);
 	}
 	
 	void accept (){
 		Account :: accept();
-		cout << "Enter the Intrest Rate : ";
-		cin >> interestRate;	
+		cout << "Enter the Service Charge : ";
+		cin >> serviceCharge;	
 	}
 	void display(){
 		Account :: display();
@@ -103,7 +102,7 @@ class CurrentAccount : class Account {
 int main()
 {
 	int choise;
-	SavingsAccount s;
+	savingsAccount s;
  	CurrentAccount c;
  	Account* ptr = &s;
 	
@@ -121,7 +120,7 @@ int main()
 	switch(choise){
 		case 1:
 			cout <<"Enter Savings Account Details:" <<endl;
-			s->accept();
+			s.accept();
 			break;
 		case 2:
 			cout <<"Enter Current Account Details:" <<endl;
@@ -129,7 +128,7 @@ int main()
 			break;
 		case 3 : 
 			cout <<"Saving Account Details: "<<endl;
-			s->display();
+			s.display();
 			break;
 		case 4:
 			cout << "Current Account Details : "<< endl;
