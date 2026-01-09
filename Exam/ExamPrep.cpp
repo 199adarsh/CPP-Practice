@@ -117,6 +117,28 @@ int main()
 	cout <<"4. Display Current Account using base-class pointer:" <<endl;
 	cout <<"5. Exit	:" <<endl;
 	cin >> choise;
+	
+	switch(choise){
+		case 1:
+			cout <<"Enter Savings Account Details:" <<endl;
+			s->accept();
+			break;
+		case 2:
+			cout <<"Enter Current Account Details:" <<endl;
+			c.accept();
+			break;
+		case 3 : 
+			cout <<"Saving Account Details: "<<endl;
+			s->display();
+			break;
+		case 4:
+			cout << "Current Account Details : "<< endl;
+			c.display();
+			break;
+		case 5 :
+			break;
+			return 0;			
+		}	
 
 
 	}
