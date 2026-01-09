@@ -37,11 +37,37 @@ class Account {
 	cout << "Enter the Bank Balance: "<<balance<< endl;
 	}
 	
-	virtual void calculateIntrest () = 0;
+	virtual void calculateIntrest () = 0;	//Exception rule inside accept(): If balance < 0, throw an exception 
 	
 
 
-};
+}; // Account class closed 
+
+
+class savingsAccount : class Account {
+	private: 
+		float interestRate;
+	public:
+		virtual void calculateIntrest () override{ // overriden the virtual funtion of calculate intrest 
+		balance = balance + (balance ×interestRate /100)
+		}
+
+	void accept (){
+		Account :: accept();
+		try {
+		cout << "Enter the Intrest Rate : ";
+		cin >> interestRate;
+		if (interestRate < 0) throw string(Intrest Rate cant be less than zero)
+		}
+		catch (string * m){
+		cout << "ERROR : " << m <<endl;	
+		}
+		
+	}
+
+
+
+}; 
 
 int main()
 {
