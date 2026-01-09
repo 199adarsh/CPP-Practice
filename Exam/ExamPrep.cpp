@@ -4,10 +4,7 @@ using namespace std;
 
 int main()
 {
-    // Comments 
-    for (int i = 0; i<5 ; i++){
-    cout << "Hello World";
-    cout << "Hello CPP";    
-    }   
+    for (int j =0; j <10 ; j++ )
+    cout << "Hellpw cpp";
     return 0;
 }
