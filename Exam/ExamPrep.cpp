@@ -35,7 +35,7 @@ class Account {
 	cout << "Bank Account Id :" <<accId << endl;
 	cout << "Account Holder : "<<accHolder << endl;
 	cout << "Bank Balance: "<<balance<< endl;
-	cout << "\n";
+	
 	}
 	
 	virtual void calculateIntrest () = 0;	//Exception rule inside accept(): If balance < 0, throw an exception 
@@ -78,13 +78,48 @@ class savingsAccount : class Account {
 
 class CurrentAccount : class Account {
 	private:
-		float serviceCharge
+		float serviceCharge;
+	public :
+
+	void calculateIntrest () override{
+	balance = balance − serviceCharge;
+	}
+	
+	void accept (){
+		Account :: accept();
+		cout << "Enter the Intrest Rate : ";
+		cin >> interestRate;	
+	}
+	void display(){
+		Account :: display();
+		cout << "Service Charges : " << serviceCharge<< endl;
+		cout << "\n";
+	}
 
 	
-}
+	
+};
 
 int main()
 {
+	int choise;
+	SavingsAccount s;
+ 	CurrentAccount c;
+ 	Account* ptr = &s;
+	
+
+	do{
+	
+	cout << "Menue:" <<endl;
+	cout <<"1. Enter Savings Account Details:" <<endl;
+	cout <<"2. Enter Current Account Details:" <<endl;
+	cout <<"3. Display Savings Account using base-class pointer:" <<endl;
+	cout <<"4. Display Current Account using base-class pointer:" <<endl;
+	cout <<"5. Exit	:" <<endl;
+	cin >> choise;
+
+
+	}
 
 
 
