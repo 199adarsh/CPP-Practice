@@ -22,12 +22,14 @@ class Account {
 
 
 	virtual void accept(){		// To accept the details of user 
+	try{
 	cout << "Enter the Bank Account Id : ";
 	cin >> accId;
 	cout << "Enter the Account Holder : ";
 	cin >> accHolder;
-	cout << "Enter the Bank Balance: ";
-	cin >> balance;
+	cout << "Enter the Bank Balance: "; 
+	cin >> balance;	if (balance<0) throw string("Balance cannot be negative!");}
+	catch(string *m){cout << &m << endl;}
 	}
 
 	virtual void display(){ //To disply the details of user 
@@ -60,7 +62,7 @@ class savingsAccount : virtual public Account {
 			if (interestRate < 0) throw string("Intrest Rate cant be less than zero");
 		}
 		catch (string* m){
-			std::cerr<< "ERROR : " << m <<endl;		// catched the error ofintrest rate (if intrest rate < 0 )
+			std::cerr<< "ERROR : " << *m <<endl;		// catched the error ofintrest rate (if intrest rate < 0 )
 		}
 		
 	}
@@ -101,14 +103,13 @@ class CurrentAccount : virtual public Account {
 	
 	
 };
-
 int main()
 {
 	int choise;
 	savingsAccount s;
  	CurrentAccount c;
- 	Account* ptr = &s;
-	
+ 	Account* ptr = new CurrentAccount;
+	 ptr=&s;
 
 	do{
 	
@@ -122,29 +123,39 @@ int main()
 	
 	switch(choise){
 		case 1:
+			ptr = new savingsAccount;
 			cout <<"Enter Savings Account Details:" <<endl;
-			s.accept();
+			ptr->accept();
 			break;
 		case 2:
+			ptr = new CurrentAccount;
 			cout <<"Enter Current Account Details:" <<endl;
 			c.accept();
 			break;
+		
 		case 3 : 
 			cout <<"Saving Account Details: "<<endl;
 			s.display();
 			break;
 		case 4:
-			cout << "Current Account Details : "<< endl;
-			c.display();
+			ptr->display();
 			break;
 		case 5 :
+			delete ptr;
+			ptr = nullptr;
 			break;
+			
+		default:
+			cout << "Invalid Choice!" <<endl;
+			
 			return 0;			
 		}	
 
 
-	}while(choise != 5);
+	}while(choise != 5 );
 
 
 
 }
+//fix the try catch throw 
+// in main function use one upcasting and fix those issues 
