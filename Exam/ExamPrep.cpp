@@ -2,15 +2,50 @@
 #include <string>
 using namespace std;
 
+class Account {
+
+    private :
+        int accId;
+        string accHolder ;
+        float balance;
+        
+    public :
+        Account (){
+            cout << "Class Account : Param-less constructor callled " << endl;
+        }// Parameter less constructor
+
+        Account ( int Id , string holder ,float bal) {
+	accId = Id;
+	accHolder = holder;
+	balance = bal;
+	
+	} // Prameterised constructor 
+
+
+	virtual void accept(){		// To accept the details of user 
+	cout << "Enter the Bank Account Id : ";
+	cin >> accId;
+	cout << "Enter the Account Holder : ";
+	cin >> accHolder;
+	cout << "Enter the Bank Balance: ";
+	cin >> balance;
+	}
+
+	virtual void display(){ //To disply the details of user 
+	cout << "Bank Account Id :" <<accId << endl;
+	cout << "Account Holder : "<<accHolder << endl;
+	cout << "Enter the Bank Balance: "<<balance<< endl;
+	}
+	
+	virtual void calculateIntrest () = 0;
+	
+
+
+};
+
 int main()
 {
-    for (int j =0; j <10 ; j++ )
-    cout << "Hellpw cpp";
-    return 0;
-    /*umerating objects: 7, done.
-Counting objects: 100% (7/7), done.
-Delta compression using up to 12 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (4/4), 430 bytes | 430.00 KiB/s, done.
-Total 4 (delta 1), reused 0 (delta 0), pack-reused */
+
+
+
 }
