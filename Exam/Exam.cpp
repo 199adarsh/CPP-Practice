@@ -141,7 +141,7 @@ int main()
 		}	
 
 
-	}
+	}while(choise != 5);
 
 
 
