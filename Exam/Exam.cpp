@@ -59,12 +59,14 @@ class savingsAccount : virtual public Account {
 			cin >> interestRate;
 			if (interestRate < 0) throw string("Intrest Rate cant be less than zero");
 		}
-		catch (string * m){
-			cout << "ERROR : " << m <<endl;		// catched the error ofintrest rate (if intrest rate < 0 )
+		catch (string* m){
+			std::cerr<< "ERROR : " << m <<endl;		// catched the error ofintrest rate (if intrest rate < 0 )
 		}
 		
 	}
+	
 	void display(){
+		savingsAccount :: calculateIntrest();
 		Account :: display();
 		cout << "Intrest Rate : " << interestRate<< endl;
 		cout << "\n";
@@ -90,6 +92,7 @@ class CurrentAccount : virtual public Account {
 		cin >> serviceCharge;	
 	}
 	void display(){
+		CurrentAccount :: calculateIntrest();
 		Account :: display();
 		cout << "Service Charges : " << serviceCharge<< endl;
 		cout << "\n";
