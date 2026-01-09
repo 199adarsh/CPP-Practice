@@ -48,8 +48,8 @@ class savingsAccount : virtual public Account {
 	private: 
 		float interestRate;
 	public:
-		virtual void calculateIntrest () override{ // overriden the virtual funtion of calculate intrest 
-		balance = balance + (balance ×interestRate /100);
+		void calculateIntrest() override{ // overriden the virtual funtion of calculate intrest 
+		balance = balance + (balance * interestRate /100);
 		}
 
 	void accept (){
@@ -57,7 +57,7 @@ class savingsAccount : virtual public Account {
 		try {
 			cout << "Enter the Intrest Rate : ";
 			cin >> interestRate;
-			if (interestRate < 0) throw string(Intrest Rate cant be less than zero);
+			if (interestRate < 0) throw string("Intrest Rate cant be less than zero");
 		}
 		catch (string * m){
 			cout << "ERROR : " << m <<endl;		// catched the error ofintrest rate (if intrest rate < 0 )
