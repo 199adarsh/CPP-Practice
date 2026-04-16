@@ -9,9 +9,9 @@ bool cmp(Job a, Job b) { return a.profit > b.profit; }
 int main() {
     Job jobs[] = {{2,100},{1,19},{2,27},{1,25}};
 
-    sort(jobs, jobs+4, cmp);
+    sort(jobs, jobs+4 /*index to loop until*/, cmp);
 
-    int slots[2] = {-1,-1}; // max deadline = 2
+    int slots[2] = {-1,-1}; 
     int totalProfit = 0;
 
     for (int i = 0; i < 4; i++)
