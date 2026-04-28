@@ -96,12 +96,13 @@ int main() {
     Employee e2("Pranav", 11, 7000, "DS");
     Employee e3("Jagdish", 45, 80000, "AIDS");
 
-        while(choice != 5){
+        while(choice != 4){
 
         cout << "\nEmployee Details" << endl;
         cout << "1.Add Frist Employee" << endl;
-        cout << "2.displayEmp Employee Details" << endl;
+        cout << "2.Display Employee Details" << endl;
         cout << "3.Delete Employee Details" << endl;
+        cout << "4.Exit the Program \n";
         cin>> choice;
 
         switch (choice)
@@ -125,6 +126,7 @@ int main() {
             list.displayEmp();
             break;
         case 4 : 
+            cout <<"Exited the Program" << endl;
             return 0;
             break;
 
