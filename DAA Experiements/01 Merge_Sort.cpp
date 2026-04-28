@@ -1,26 +1,32 @@
 #include <iostream>
 using namespace std;
 
-void merge(int a[], int l, int m, int r) {
-    int temp[100], i = l, j = m + 1, k = l;
+void merge(int a[], int left, int mid, int right) {
+    int temp[100], i = left, j = mid + 1, k = left;
 
-    while (i <= m && j <= r) {
+    while (i <= mid && j <= right) {
+
         if (a[i] <= a[j]) temp[k++] = a[i++];
+        
         else temp[k++] = a[j++];
     }
 
-    while (i <= m) temp[k++] = a[i++];
-    while (j <= r) temp[k++] = a[j++];
+    while (i <= mid) temp[k++] = a[i++];
+    while (j <= right) temp[k++] = a[j++];
 
-    for (int x = l; x <= r; x++) a[x] = temp[x];
+
+
+    for (int x = left; x <= right; x++) a[x] = temp[x];
 }
 
-void mergeSort(int a[], int l, int r) {
-    if (l < r) {
-        int m = (l + r) / 2;
-        mergeSort(a, l, m);
-        mergeSort(a, m + 1, r);
-        merge(a, l, m, r);
+void mergeSort(int a[], int left, int right) {
+    if (left < right) {
+        int mid = (left + right) / 2;
+
+        mergeSort(a, left, mid);
+        mergeSort(a, mid + 1, right);
+        
+        merge(a, left, mid, right);
     }
 }
 

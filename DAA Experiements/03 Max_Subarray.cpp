@@ -21,8 +21,6 @@ int max_c(int arr[], int l , int m , int r){
 
 
 
-
-
 int maxSub (int arr[], int l , int r){
 
     if(l == r) return arr[l];
