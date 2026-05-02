@@ -21,7 +21,7 @@ int knapsack(vector<int> wt, vector<int> val, int W) {
 }
 
 int main() {
-    vector<int> wt = {1,2,3};
-    vector<int> val = {10,15,40};
-    cout << knapsack(wt, val, 5); // 55
+    vector<int> wt = {1,2,3,4};
+    vector<int> val = {10,15,40,15};
+    cout << knapsack(wt, val, 5); 
 }
