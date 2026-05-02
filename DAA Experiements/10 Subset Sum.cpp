@@ -1,22 +1,24 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-void solve(vector<int>& a, int i, int sum, int target, vector<int>& cur) {
-    if (sum == target) {
-        for (int x : cur) cout << x << " ";
-        cout << "\n";
-        return;
+int set[] = {1,2,5,6,8}, sub[10], n=5, target=9;
+
+bool subSet(int i, int sum, int k){
+
+    if(sum==target){
+
+        for(int j=0; j<k; j++) cout<<sub[j]<<" ";
+        return true;
     }
-    if (i == a.size() || sum > target) return;
+    for(; i<n; i++){
+        if(sum + set[i] <= target){
+            sub[k] = set[i];
 
-    cur.push_back(a[i]);
-    solve(a, i+1, sum + a[i], target, cur);
-    cur.pop_back();
-
-    solve(a, i+1, sum, target, cur);
+            if(subSet(i+1, sum+set[i], k+1)) 
+            return true;
+        }
+    }
+    return false;
 }
 
-int main() {
-    vector<int> a = {1,2,5,6,8}, cur;
-    solve(a, 0, 0, 9, cur);
-}
+int main(){ subSet(0,0,0); }

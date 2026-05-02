@@ -1,17 +1,31 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 int main() {
-    vector<int> val = {60,100,120}, wt = {10,20,30};
-    int n = val.size(), W = 50;
+    vector<int> value = {1,2,5,6};
+    vector<int> weight = {2,3,4,5};
+    int n = 4;
+    int maxWeight = 8;
 
-    vector<vector<int>> dp(n+1, vector<int>(W+1, 0));
+    
+    vector<vector<int>> dp(n + 1, vector<int>(maxWeight + 1, 0));
 
-    for (int i = 1; i <= n; i++)
-        for (int w = 1; w <= W; w++)
-            dp[i][w] = (wt[i-1] <= w)
-                ? max(val[i-1] + dp[i-1][w-wt[i-1]], dp[i-1][w])
-                : dp[i-1][w];
+    for (int i = 1; i <= n; i++) {
+        for (int j = 0; j <= maxWeight; j++) {
 
-    cout << dp[n][W];
+            // option 1: don't take the item
+            int notTake = dp[i - 1][j];
+
+            // option 2: take the item (only if possible)
+            int take = 0;
+            if (weight[i - 1] <= j) {
+                take = value[i - 1] + dp[i - 1][j - weight[i - 1]];
+            }
+
+            dp[i][j] = max(take, notTake);
+        }
+    }
+
+    cout << dp[n][maxWeight];
 }
