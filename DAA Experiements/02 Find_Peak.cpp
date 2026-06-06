@@ -7,13 +7,13 @@ int main() {
 
     int l = 0, r = n - 1;
 
-    while (l < r) {
-        int mid = (l + r) / 2;
+    while (l < r) { // search until left is less than right 
+        int mid = (l + r) / 2;  // divide the search space 
 
         if (a[mid] < a[mid + 1])
-            l = mid + 1;
+            l = mid + 1;            // if mid is less than mid+1 then left will mid+1
         else
-            r = mid;
+            r = mid;        // else assign mid as right 
     }
 
     cout << "Peak index: " << l;

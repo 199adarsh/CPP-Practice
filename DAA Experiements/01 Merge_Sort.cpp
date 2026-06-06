@@ -6,15 +6,13 @@ void merge(int a[], int left, int mid, int right) {
 
     while (i <= mid && j <= right) {
 
-        if (a[i] <= a[j]) temp[k++] = a[i++];
+        if (a[i] <= a[j]) { temp[k] = a[i]; k++,i++; }
         
-        else temp[k++] = a[j++];
+            else {temp[k] = a[j];   k++,j++;}
     }
 
     while (i <= mid) temp[k++] = a[i++];
     while (j <= right) temp[k++] = a[j++];
-
-
 
     for (int x = left; x <= right; x++) a[x] = temp[x];
 }

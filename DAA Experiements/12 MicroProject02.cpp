@@ -1,27 +1,45 @@
-//Hospital Bed Allocation (0/1 Knapsack)
-
 #include <iostream>
 #include <vector>
 using namespace std;
 
-int knapsack(vector<int> wt, vector<int> val, int W) {
-    int n = wt.size();
-    vector<vector<int>> dp(n+1, vector<int>(W+1, 0));
+int knapsack(vector<int> beds, vector<int> priority, int totalBeds) {
+    int n = beds.size();
+    vector<vector<int>> dp(n + 1, vector<int>(totalBeds + 1, 0));
 
-    for(int i=1;i<=n;i++){
-        for(int w=1;w<=W;w++){
-            if(wt[i-1] <= w)
-                dp[i][w] = max(val[i-1] + dp[i-1][w-wt[i-1]],
-                               dp[i-1][w]);
-            else
-                dp[i][w] = dp[i-1][w];
+    for (int i = 1; i <= n; i++) {
+        for (int j = 0; j <= totalBeds; j++) {
+
+            int notTake = dp[i - 1][j];
+            int take = 0;
+
+            if (beds[i - 1] <= j) {
+                take = priority[i - 1] + dp[i - 1][j - beds[i - 1]];
+            }
+
+            dp[i][j] = max(take, notTake);
         }
     }
-    return dp[n][W];
+
+    return dp[n][totalBeds];
 }
 
 int main() {
-    vector<int> wt = {1,2,3,4};
-    vector<int> val = {10,15,40,15};
-    cout << knapsack(wt, val, 5); 
+    vector<int> beds = {1, 2, 3, 4};        
+    vector<int> priority = {10, 15, 40, 15};
+    int totalBeds = 5;
+
+    cout << "Hospital Bed Allocation\n";
+
+    for(int i = 0; i < beds.size(); i++){
+        cout << "Patient " << i+1 
+             << ": Beds=" << beds[i] 
+             << ", Priority=" << priority[i] << endl;
+    }
+
+    int result = knapsack(beds, priority, totalBeds);
+
+    cout << "\nTotal Beds Available: " << totalBeds << endl;
+    cout << "Maximum Priority Allocated: " << result << endl;
+
+    return 0;
 }

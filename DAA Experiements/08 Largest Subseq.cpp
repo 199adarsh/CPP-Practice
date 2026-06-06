@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    vector<int> arr = {10, 22, 33, 50, 60, 80};
+    vector<int> arr = {10, 2, 33, 50, 60, 80};
     int n = arr.size();
 
     vector<int> dp(n, 1);
