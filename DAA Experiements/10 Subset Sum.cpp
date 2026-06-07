@@ -1,24 +1,29 @@
 #include <iostream>
 using namespace std;
 
-int set[] = {1,2,5,6,8}, sub[10], n=5, target=9;
+int a[] = {1,2,5,6,8};
+int idx[5];
 
-bool subSet(int i, int sum, int k){
-
-    if(sum==target){
-
-        for(int j=0; j<k; j++) cout<<sub[j]<<" ";
-        return true;
-    }
-    for(; i<n; i++){
-        if(sum + set[i] <= target){
-            sub[k] = set[i];
-
-            if(subSet(i+1, sum+set[i], k+1)) 
-            return true;
+void subset(int i,int sum, int k){
+ 
+    if (sum == 9) {
+        cout<<"\nFound at Index :";
+        for (int j = 0; j < k; j++) cout << idx[j] ;
+    
         }
-    }
-    return false;
+    
+
+    if (i>=5 || sum >=9) return;
+
+    idx[k]=i;
+    subset(i+1,sum+a[i],k+1);
+    subset(i+1,sum,k);
+    
+
+
+
 }
 
-int main(){ subSet(0,0,0); }
+int main() {
+    subset(0, 0, 0);
+}

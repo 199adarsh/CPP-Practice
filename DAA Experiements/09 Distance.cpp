@@ -14,11 +14,12 @@ int main() {
         for (int j = 1; j <= n; j++) {
             if (a[i - 1] == b[j - 1])
                 dp[i][j] = dp[i - 1][j - 1];
+                
             else
                 dp[i][j] = 1 + min({
-                    dp[i][j - 1],     // insert
-                    dp[i - 1][j],     // delete
-                    dp[i - 1][j - 1]  // replace
+                                    dp[i][j - 1],     // insert
+                                    dp[i - 1][j],     // delete
+                                    dp[i - 1][j - 1]  // replace
                 });
         }
     }
