@@ -24,6 +24,7 @@ void subset(int i,int sum, int k){
 
 }
 
+
 int main() {
     subset(0, 0, 0);
 }
